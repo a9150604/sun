@@ -1,0 +1,28 @@
+Certus-NX PicoRV32：4 DIP + 4 Button + 8 LED (不需 UART)
+===============================================
+使用前先替換原完整版中的 fw/main.c、rtl/soc/picorv32_cpu_axil_uart.v、firmware.hex；重新 synthesis/map/P&R/bitstream 並燒入。
+Top 必須是 certus_nx_picorv32_qsfp_standalone_top（不是 LED bringup top）。
+
+DIP[1:0]   00 OSFP0 / 01 OSFP1 / 10 OSFP2 / 11 OSFP3
+DIP[3:2]   00 Direct Read / 01 Auto Poll / 10 Direct Write（預設SKIP）/ 11 IRQ+模擬 MSI
+
+BTN0  RUN：執行目前測試
+BTN1  NEXT：選擇下一個 register (Direct 0x00/01/02) 或 poll slot (0..7)
+BTN2  DATA/STATUS：切換 LED 顯示模式
+BTN3  CLEAR：清目前結果，回到選擇 LED 畫面（不是 CPU Reset）
+
+尚未執行測試 LED：bit7=1, bit6:5=通道, bit4:3=模式, bit2:0=編號。
+測試結果 LED：bit1=PASS, bit2=FAIL, bit3=NACK, bit4=TIMEOUT, bit5=SKIP, bit6=DataValid, bit7=RestoreFail。
+按 BTN2 後：LED7:0 = Read Actual Byte，例 0x19 => LED4、LED3、LED0 亮。
+
+最簡單 Direct Read：
+1. DIP[3:0] 設 0000。2. BTN0 按一次。3. 看 LED1 PASS。4. BTN2 顯示 Register 0x00 的 8-bit 實際值。
+5. BTN1 切到 Register 0x01，BTN0 再測。6. DIP改 0001/0010/0011 選其他 OSFP。
+
+最簡單 Auto Poll：
+1. DIP[3:0] 設 0100。2. BTN0 執行 8-slot Polling 比對。3. BTN2 顯示 SHADOW0 actual。
+4. BTN1 切下一個 slot，再 BTN0 重新測。
+
+注意：DIP/BTN 這裡的 0/1 是 FPGA 看到的電位，不一定等於板上 ON/OFF；預設 BTN 為低有效。
+Write Test 預設 SKIP，不會任意改 OSFP 暫存器；IRQ/MSI 僅是 FPGA 內部模擬 ACK，不是 Host IRQ。
+詳情請讀 README_zh_TW.md。
