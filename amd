@@ -1,0 +1,55 @@
+我查閱了 Lattice 與 AMD/Xilinx 的官方 Datasheet。如果以邏輯容量、Block RAM、PCIe 功能及 484-pin 封裝綜合比較，與 Lattice Certus-NX LFD2NX-65-9BG484I 規格最接近的是：
+
+最接近的型號
+
+AMD Artix-7 XC7A75T-2FGG484I
+
+* 75,520 Logic Cells
+* 285 個 User I/O
+* 3.78 Mb Block RAM
+* PCIe Gen2 Hard IP，最高 x4
+* 484-ball BGA
+* Industrial Temperature Grade
+
+這是規格相近的替代候選，不是 Pin-to-Pin 相容的直接替換品。
+
+一、詳細規格比較
+
+規格	Lattice LFD2NX-65	Xilinx XC7A75T	Xilinx XCAU7P
+FPGA 系列	Certus-NX	Artix-7	Artix UltraScale+
+製程	28 nm FD-SOI	28 nm	16 nm
+Logic Cells	65K	75.5K	82K
+Embedded Memory	3.33 Mb	3.78 Mb BRAM	4.9 Mb 總 RAM
+DSP／乘法資源	128 個 18×18 乘法器	180 DSP48E1	216 DSP Slices
+User I/O	365 個數位 I/O	285	248
+PCIe Hard IP	Gen2 x1	Gen2，最高 x4	Gen3，最高 x4
+封裝	484 BGA	484 BGA	484 BGA
+封裝尺寸	19 × 19 mm	23 × 23 mm	19 × 19 mm
+
+Lattice 的 365 個數位 I/O 加上 6 個 ADC 相關腳位，合計為產品選型表中的 371 個 I/O。不同廠牌的 Logic Cells、DSP 與 RAM 結構並不完全相同，因此上述數值不能視為一比一對應。Low Power General Purpose FPGA +4
+
+二、為什麼推薦 XC7A75T？
+
+主要有三個原因：
+
+* 邏輯容量接近：75.5K 與原本 65K 的標稱容量相差約 16%。
+* 記憶體容量接近：3.78 Mb BRAM 與原本 3.33 Mb EBR＋LRAM 在容量上相近。
+* PCIe 功能相容性高：XC7A75T 可以配置 PCIe Gen2 x1 Endpoint，符合你原來的 PCIe 架構需求。
+
+不過，XC7A75T 的 I/O 比原本少了 80 個數位腳位，且封裝面積較大，這是最明顯的差異。
+
+三、如果考慮你的 PCIe to 64 Masters 專案
+
+我會把候選分成三種：
+
+選型目的	建議型號	理由
+規格最接近	XC7A75T-FGG484	Logic、RAM、PCIe 相近
+保留更多 RTL 資源	XC7A100T-FGG484	101K Logic Cells，285 I/O
+GPIO 數量更接近	XC7K160T-FBG676	400 I/O，但改成 676-pin
+新製程、小封裝	XCAU7P-SBVC484	19 × 19 mm，PCIe Gen3
+
+對你之前的 64 路獨立 I2C／I3C Master 而言，128 個 SCL/SDA 腳位加上其他控制腳位，XC7A75T 的 285 I/O 原則上足夠。
+
+但如果每路都是完整 I3C Controller，包含獨立 FSM、FIFO、動態位址分配及中斷處理，我會優先對 XC7A75T 與 XC7A100T 執行 Vivado 綜合比較，確認 LUT／FF 使用率與 125 MHz Timing Closure 後再定案。
+
+我的結論：如果你只是想找到與 LFD2NX-65-9BG484I 規格最接近的 AMD FPGA，選 XC7A75T-2FGG484I。如果目標是讓 64 路 Master 都有充裕的邏輯與時序餘裕，則 XC7A100T-2FGG484I 更值得優先評估。
