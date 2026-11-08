@@ -1,0 +1,75 @@
+     VMA      LMA     Size Align Out     In      Symbol
+       0        0        0     1 . = ORIGIN ( RAM )
+       0        0      324     4 .text
+       0        0       30     1         build/start.o:(.text.init)
+       0        0        0     1                 .Lpcrel_hi0
+       0        0        0     1                 $x
+       0        0        0     1                 _start
+       8        8        0     1                 .Lpcrel_hi1
+      10       10        0     1                 .Lpcrel_hi2
+      18       18        0     1                 .Ltmp0
+      28       28        0     1                 .Ltmp1
+      2c       2c        0     1                 .Ltmp2
+      30       30       6c     4         build/common.o:(.text.heartbeat)
+      30       30        0     1                 $x
+      30       30       6c     1                 heartbeat
+      98       98        0     1                 .L0 
+      9c       9c       38     4         build/common.o:(.text.led_set)
+      9c       9c        0     1                 $x
+      9c       9c       38     1                 led_set
+      d4       d4       88     4         build/common.o:(.text.delay_ms)
+      d4       d4        0     1                 $x
+      d4       d4       88     1                 delay_ms
+     10c      10c        0     1                 .L0 
+     114      114        0     1                 .L0 
+     134      134        0     1                 .L0 
+     158      158        0     1                 .L0 
+     15c      15c       50     4         build/common.o:(.text.set_dev_addr)
+     15c      15c        0     1                 $x
+     15c      15c       50     1                 set_dev_addr
+     1a8      1a8        0     1                 .L0 
+     1ac      1ac       8c     4         build/common.o:(.text.publish)
+     1ac      1ac        0     1                 $x
+     1ac      1ac       8c     1                 publish
+     1e8      1e8        0     1                 .L0 
+     238      238       78     4         build/common.o:(.text.init_common)
+     238      238        0     1                 $x
+     238      238       78     1                 init_common
+     260      260        0     1                 .L0 
+     280      280        0     1                 .L0 
+     2b0      2b0       10     4         build/common.o:(.text.request_pcie_after_test)
+     2b0      2b0        0     1                 $x
+     2b0      2b0       10     1                 request_pcie_after_test
+     2bc      2bc        0     1                 .L0 
+     2c0      2c0       64     4         build/auto_direct_write.o:(.text.main)
+     2c0      2c0        0     1                 $x
+     2c0      2c0       64     1                 main
+     31c      31c        0     1                 .L0 
+     324      324        0     1 . = ALIGN ( 4 )
+     324      324        8     4 .data
+     324      324        8     4         build/common.o:(.sdata)
+     324      324        0     1                 $d
+     324      324        4     1                 clk_hz
+     328      328        4     1                 current_dev
+     32c      32c        0     1 . = ALIGN ( 4 )
+     32c      32c        0     1 _sbss = .
+     32c      32c        9     4 .bss
+     32c      32c        9     4         build/common.o:(.sbss)
+     32c      32c        0     1                 $d
+     32c      32c        1     1                 led_flags
+     330      330        4     1                 hb_start
+     334      334        1     1                 hb
+     335      335        3     1 . = ALIGN ( 4 )
+     338      338        0     1 _ebss = .
+     338      338        0     1 _stack_top = ORIGIN ( RAM ) + LENGTH ( RAM )
+     338      338        0     1 
+       0        0       2a     1 .riscv.attributes
+       0        0       2a     1         <internal>:(.riscv.attributes)
+       0        0       db     1 .comment
+       0        0       db     1         <internal>:(.comment)
+       0        0      350     4 .symtab
+       0        0      350     4         <internal>:(.symtab)
+       0        0       47     1 .shstrtab
+       0        0       47     1         <internal>:(.shstrtab)
+       0        0      15e     1 .strtab
+       0        0      15e     1         <internal>:(.strtab)

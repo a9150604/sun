@@ -1,0 +1,97 @@
+     VMA      LMA     Size Align Out     In      Symbol
+       0        0        0     1 . = ORIGIN ( RAM )
+       0        0      638     4 .text
+       0        0       30     1         build/start.o:(.text.init)
+       0        0        0     1                 .Lpcrel_hi0
+       0        0        0     1                 $x
+       0        0        0     1                 _start
+       8        8        0     1                 .Lpcrel_hi1
+      10       10        0     1                 .Lpcrel_hi2
+      18       18        0     1                 .Ltmp0
+      28       28        0     1                 .Ltmp1
+      2c       2c        0     1                 .Ltmp2
+      30       30       6c     4         build/common.o:(.text.heartbeat)
+      30       30        0     1                 $x
+      30       30       6c     1                 heartbeat
+      98       98        0     1                 .L0 
+      9c       9c       88     4         build/common.o:(.text.delay_ms)
+      9c       9c        0     1                 $x
+      9c       9c       88     1                 delay_ms
+      d4       d4        0     1                 .L0 
+      dc       dc        0     1                 .L0 
+      fc       fc        0     1                 .L0 
+     120      120        0     1                 .L0 
+     124      124       50     4         build/common.o:(.text.set_dev_addr)
+     124      124        0     1                 $x
+     124      124       50     1                 set_dev_addr
+     170      170        0     1                 .L0 
+     174      174      274     4         build/common.o:(.text.poll_read)
+     174      174        0     1                 $x
+     174      174      274     1                 poll_read
+     248      248        0     1                 .L0 
+     2a4      2a4        0     1                 .L0 
+     2cc      2cc        0     1                 .L0 
+     2f0      2f0        0     1                 .L0 
+     300      300        0     1                 .L0 
+     304      304        0     1                 .L0 
+     32c      32c        0     1                 .L0 
+     338      338        0     1                 .L0 
+     348      348        0     1                 .L0 
+     35c      35c        0     1                 .L0 
+     3a8      3a8        0     1                 .L0 
+     3e0      3e0        0     1                 .L0 
+     3e8      3e8       cc     4         build/common.o:(.text.wait_idle)
+     3e8      3e8       cc     1                 wait_idle
+     3e8      3e8        0     1                 $x
+     454      454        0     1                 .L0 
+     484      484        0     1                 .L0 
+     488      488        0     1                 .L0 
+     4b4      4b4       78     4         build/common.o:(.text.init_common)
+     4b4      4b4        0     1                 $x
+     4b4      4b4       78     1                 init_common
+     4dc      4dc        0     1                 .L0 
+     4fc      4fc        0     1                 .L0 
+     52c      52c       2c     4         build/common.o:(.text.start_test)
+     52c      52c        0     1                 $x
+     52c      52c       2c     1                 start_test
+     558      558       58     4         build/common.o:(.text.end_test)
+     558      558        0     1                 $x
+     558      558       58     1                 end_test
+     564      564        0     1                 .L0 
+     570      570        0     1                 .L0 
+     5b0      5b0       10     4         build/common.o:(.text.request_pcie_after_test)
+     5b0      5b0        0     1                 $x
+     5b0      5b0       10     1                 request_pcie_after_test
+     5bc      5bc        0     1                 .L0 
+     5c0      5c0       78     4         build/auto_poll_read.o:(.text.main)
+     5c0      5c0        0     1                 $x
+     5c0      5c0       78     1                 main
+     630      630        0     1                 .L0 
+     638      638        0     1 . = ALIGN ( 4 )
+     638      638        8     4 .data
+     638      638        8     4         build/common.o:(.sdata)
+     638      638        0     1                 $d
+     638      638        4     1                 clk_hz
+     63c      63c        4     1                 current_dev
+     640      640        0     1 . = ALIGN ( 4 )
+     640      640        0     1 _sbss = .
+     640      640        9     4 .bss
+     640      640        9     4         build/common.o:(.sbss)
+     640      640        0     1                 $d
+     640      640        1     1                 led_flags
+     644      644        4     1                 hb_start
+     648      648        1     1                 hb
+     649      649        3     1 . = ALIGN ( 4 )
+     64c      64c        0     1 _ebss = .
+     64c      64c        0     1 _stack_top = ORIGIN ( RAM ) + LENGTH ( RAM )
+     64c      64c        0     1 
+       0        0       2a     1 .riscv.attributes
+       0        0       2a     1         <internal>:(.riscv.attributes)
+       0        0       db     1 .comment
+       0        0       db     1         <internal>:(.comment)
+       0        0      490     4 .symtab
+       0        0      490     4         <internal>:(.symtab)
+       0        0       47     1 .shstrtab
+       0        0       47     1         <internal>:(.shstrtab)
+       0        0      1c9     1 .strtab
+       0        0      1c9     1         <internal>:(.strtab)
