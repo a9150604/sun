@@ -1,0 +1,46 @@
+Certus-NX PicoRV32 + 4 x OSFP UART 操作卡 (115200 8N1)
+
+接線 FPGA UART_TX -> USB-UART RX; FPGA UART_RX <- USB-UART TX; GND <-> GND
+上電選擇 firmware/interactive.hex，再改名/複製為 firmware.hex。
+
+初次測試 (OSFP0 7-bit I2C 0x50, direct read register 0x00):
+  mode cpu
+  id
+  ch 0
+  dev 0x50
+  reg 0x00
+  read
+
+切到 OSFP1 讀 register 0x01:
+  ch 1
+  dev 0x50
+  read 0x01
+
+8 個 Polling 位址由 8 個 pollset 指令設定，可重複使用預設 0x00..0x07:
+  pollgap 0x03E8
+  poll
+
+Direct Write / Readback / Restore （有風險，需原廠確認安全的 register）:
+  ch 0
+  dev 0x50
+  reg 0x90
+  data 0x55
+  unlock
+  writeverify
+  lock
+  注意：0x90 和 0x55 只是語法示例，不保證安全！
+
+切 AXI-Lite owner:
+  mode pcie
+  mode cpu
+  切換前必須確定 PCIe host driver 沒有未完成的 transaction。
+
+獨立自動韌體: 修改 fw/config/*.h => rebuild =>
+  py -3 scripts/select_firmware.py auto_direct_read
+或 py -3 scripts/select_firmware.py auto_poll_read
+或 py -3 scripts/select_firmware.py auto_direct_write (預設 disable)
+重新實作 bitstream、燒錄 FPGA、CPU reset 後等待 START_DELAY_MS 自動開始。
+
+LED0=heartbeat LED1=RUN LED2=DONE LED3=PASS LED4=FAIL
+LED5=NACK LED6=TIMEOUT LED7=TRAP。
+Reveal probe=dbg_event[31:0]+dbg_pulse，trigger dbg_pulse。
