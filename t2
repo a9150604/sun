@@ -1,0 +1,80 @@
+`timescale 1ns/1ps
+// UART RX decoder smoke test WITHOUT PicoRV32, AXI, GPIO, firmware or LED.
+// Every decoded ASCII byte is echoed through the original custom UART TX.
+// On Enter/CR (0x0D) it additionally prints "\nRX OK\r\n".
+// This is NOT a combinational RX->TX loopback.
+module uart_rx_decoder_echo_top #(
+    parameter integer CLK_HZ = 125000000,
+    parameter integer BAUD = 115200,
+    parameter integer LED_ACTIVE_LOW = 0
+)(
+    input  wire clk,
+    input  wire resetn,
+    input  wire uart_rx,
+    output wire uart_tx,
+    output wire [7:0] leds,
+    inout  wire [3:0] i2c_scl,
+    inout  wire [3:0] i2c_sda
+);
+    // Keep original board port names/PDC. No LEDs are used for this test.
+    assign leds = {8{LED_ACTIVE_LOW}};
+    assign i2c_scl = 4'bzzzz;
+    assign i2c_sda = 4'bzzzz;
+    wire [7:0] rx_data;
+    wire       rx_valid, rx_overrun, rx_framing_error;
+    wire       tx_ready;
+    wire       tx_fire;
+    wire       rx_pop;
+    reg [7:0] tx_data;
+    reg [2:0] reply_state;
+
+    localparam [2:0] ECHO = 3'd0,
+                     LF1  = 3'd1,
+                     O    = 3'd2,
+                     K    = 3'd3,
+                     CR2  = 3'd4,
+                     LF2  = 3'd5;
+
+    uart_rx_byte #(.CLK_HZ(CLK_HZ), .BAUD(BAUD)) u_rx (
+        .clk(clk), .resetn(resetn), .serial_rx(uart_rx),
+        .pop(rx_pop), .data(rx_data), .valid(rx_valid),
+        .overrun(rx_overrun), .framing_error(rx_framing_error)
+    );
+
+    assign rx_pop = (reply_state == ECHO) && rx_valid && tx_ready;
+    assign tx_fire = (reply_state == ECHO) ? rx_pop : tx_ready;
+
+    always @(*) begin
+        tx_data = 8'h00;
+        case (reply_state)
+            ECHO: tx_data = rx_data;
+            LF1:  tx_data = 8'h0A;
+            O:    tx_data = "O";
+            K:    tx_data = "K";
+            CR2:  tx_data = 8'h0D;
+            LF2:  tx_data = 8'h0A;
+            default: tx_data = 8'h00;
+        endcase
+    end
+
+    uart_tx_mmio #(.CLK_HZ(CLK_HZ), .BAUD(BAUD)) u_tx (
+        .clk(clk), .resetn(resetn), .tx_fire(tx_fire),
+        .tx_data(tx_data), .tx_ready(tx_ready), .uart_tx(uart_tx)
+    );
+
+    always @(posedge clk or negedge resetn) begin
+        if (!resetn)
+            reply_state <= ECHO;
+        else if (tx_fire) begin
+            case (reply_state)
+                ECHO: if (rx_data == 8'h0D) reply_state <= LF1;
+                LF1: reply_state <= O;
+                O:   reply_state <= K;
+                K:   reply_state <= CR2;
+                CR2: reply_state <= LF2;
+                LF2: reply_state <= ECHO;
+                default: reply_state <= ECHO;
+            endcase
+        end
+    end
+endmodule
