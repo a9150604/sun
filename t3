@@ -1,0 +1,134 @@
+`timescale 1ns/1ps
+// PicoRV32 v4 compatible custom UART receiver (NOT upstream simpleuart).
+// 8N1, synchronized async input, center-of-bit sampling, 4-byte RX FIFO.
+// Interface retains data/valid/overrun/pop semantics of v4.
+// Addition: framing_error (sticky, clears on FIFO pop or reset).
+// A read of RXDATA must assert pop for exactly one accepted CPU read.
+module uart_rx_byte #(
+    parameter integer CLK_HZ = 125000000,
+    parameter integer BAUD   = 115200
+)(
+    input  wire       clk,
+    input  wire       resetn,
+    input  wire       serial_rx,
+    input  wire       pop,
+    output wire [7:0] data,
+    output wire       valid,
+    output reg        overrun,
+    output reg        framing_error
+);
+    localparam integer D0  = (CLK_HZ + BAUD/2) / BAUD;
+    localparam integer DIV = (D0 < 4) ? 4 : D0;
+
+    localparam [1:0] RX_IDLE  = 2'd0,
+                     RX_START = 2'd1,
+                     RX_DATA  = 2'd2,
+                     RX_STOP  = 2'd3;
+
+    reg rx_meta, rx_sync, rx_prev;
+    reg [1:0]  state;
+    reg [15:0] tick_count; // Enough for DIV=1085 at 125MHz/115200
+    reg [2:0]  bit_pos;
+    reg [7:0]  shift;
+
+    // Fixed 4-entry FIFO: small FF/mux footprint; no FPGA EBR required.
+    reg [7:0] fifo [0:3];
+    reg [1:0] rd_ptr, wr_ptr;
+    reg [2:0] count;
+    wire fifo_pop;
+    wire frame_done;
+    wire frame_good;
+    wire fifo_push;
+
+    assign valid = (count != 3'd0);
+    assign data  = valid ? fifo[rd_ptr] : 8'h00;
+    assign fifo_pop  = pop && valid;
+    assign frame_done = (state == RX_STOP) && (tick_count == 0);
+    assign frame_good = frame_done && rx_sync;
+    // A pop frees space on the same edge as a new incoming byte.
+    assign fifo_push = frame_good && ((count != 3'd4) || fifo_pop);
+
+    always @(posedge clk or negedge resetn) begin
+        if (!resetn) begin
+            rx_meta      <= 1'b1;
+            rx_sync      <= 1'b1;
+            rx_prev      <= 1'b1;
+            state        <= RX_IDLE;
+            tick_count   <= 16'd0;
+            bit_pos      <= 3'd0;
+            shift        <= 8'h00;
+            wr_ptr       <= 2'd0;
+            rd_ptr       <= 2'd0;
+            count        <= 3'd0;
+            overrun      <= 1'b0;
+            framing_error <= 1'b0;
+        end else begin
+            rx_meta <= serial_rx;
+            rx_sync <= rx_meta;
+            rx_prev <= rx_sync;
+
+            // FIFO write/read happen on the clock's active edge.
+            if (fifo_push) begin
+                fifo[wr_ptr] <= shift;
+                wr_ptr <= wr_ptr + 2'd1;
+            end
+            if (fifo_pop)
+                rd_ptr <= rd_ptr + 2'd1;
+
+            case ({fifo_push, fifo_pop})
+                2'b10: count <= count + 3'd1;
+                2'b01: count <= count - 3'd1;
+                default: count <= count;
+            endcase
+
+            // Sticky RX error flags. Legacy overrun bit retains bit 1.
+            if (fifo_pop) begin
+                overrun <= 1'b0;
+                framing_error <= 1'b0;
+            end
+            if (frame_good && !fifo_push)
+                overrun <= 1'b1;
+            if (frame_done && !rx_sync)
+                framing_error <= 1'b1;
+
+            case (state)
+                RX_IDLE: begin
+                    // Require a falling edge, not an indefinitely low level.
+                    if (rx_prev && !rx_sync) begin
+                        tick_count <= (DIV/2) - 1;
+                        state <= RX_START;
+                    end
+                end
+                RX_START: begin
+                    if (tick_count != 0)
+                        tick_count <= tick_count - 1;
+                    else if (!rx_sync) begin
+                        tick_count <= DIV - 1;
+                        bit_pos <= 3'd0;
+                        state <= RX_DATA;
+                    end else
+                        state <= RX_IDLE;  // reject false START
+                end
+                RX_DATA: begin
+                    if (tick_count != 0)
+                        tick_count <= tick_count - 1;
+                    else begin
+                        shift[bit_pos] <= rx_sync;
+                        tick_count <= DIV - 1;
+                        if (bit_pos == 3'd7)
+                            state <= RX_STOP;
+                        else
+                            bit_pos <= bit_pos + 3'd1;
+                    end
+                end
+                RX_STOP: begin
+                    if (tick_count != 0)
+                        tick_count <= tick_count - 1;
+                    else
+                        state <= RX_IDLE;
+                end
+                default: state <= RX_IDLE;
+            endcase
+        end
+    end
+endmodule
