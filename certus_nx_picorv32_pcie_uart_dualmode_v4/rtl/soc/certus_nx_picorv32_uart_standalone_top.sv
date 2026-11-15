@@ -7,7 +7,7 @@ module certus_nx_picorv32_uart_standalone_top #(
   parameter integer BAUD=115200,
   parameter integer I2C_CLK_DIV=625,
   parameter integer LED_ACTIVE_LOW=0,
-  parameter FIRMWARE_HEX="firmware.hex"
+  parameter FIRMWARE_HEX="interactive.hex"
 )(
   input wire clk, input wire resetn,
   input wire uart_rx, output wire uart_tx,
