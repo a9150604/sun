@@ -35,5 +35,5 @@ module certus_nx_picorv32_uart_standalone_top #(
     .host_araddr(16'd0),.host_arvalid(1'b0),.host_arready(),
     .host_rdata(),.host_rresp(),.host_rvalid(),.host_rready(1'b0)
   );
-  assign leds = led_raw ^ {8{LED_ACTIVE_LOW}};
+  assign leds = led_raw ^ {8{LED_ACTIVE_LOW != 0}};
 endmodule
