@@ -58,6 +58,8 @@
 
 請回報 **按 A 前／後的 LED0～7、有無 A 回顯**，以及原 CPU 工程的實際 clock 與 worst slack／WNS。
 
+若清空終端、重置後仍在提示符前出現 DIRECT_READ，可使用 [文字探針韌體](firmware_probe/README_zh_TW.md)。保持本 CPU 診斷 Top，只將 FIRMWARE_HEX 改為 firmware/uart_cpu_probe.hex，重新產生 bitstream，即可列出 LW／LBU／NUL 與原始 RX 資料。正常 interactive.hex 保持原樣。
+
 ## 可用的 Reveal 觀測點
 
 從新 top 的 u_soc.u_cpu_subsystem 觀察 cpu_trap、rx_valid、rx_data、diag_rx_read_done、diag_rx_status_done、tx_fire、mem_valid、mem_ready、mem_addr、mem_rdata。若使用官方 PicoRV32，可觀察 u_cpu.reg_pc；指令名稱依實際 CPU RTL 版本核對。
