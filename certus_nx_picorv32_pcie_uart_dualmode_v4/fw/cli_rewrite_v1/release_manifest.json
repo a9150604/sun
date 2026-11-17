@@ -59,13 +59,13 @@
     ".text": 9356
   },
   "source_sha256": {
-    "build.py": "01624e944bd29ddf6b0bab45c3a7e584fb87c139a0d51def65f9960cab650dc6",
+    "build.py": "f80b134507c270f5b32db97d9fd2fc53b13c45d737cb61705fde3beda40890bf",
     "i2c.c": "39adb7073fe3337612523c76369300fe001360f1f987abf34b4520737d15ab7e",
     "i2c.h": "86f6a8b7603aeae33f7e47c79d30e7e16613163c0a889c36e37322d740cb0206",
     "linker.ld": "b849a9b3776e81433a7e1a9091cbed4455de9b5da7de001839b87a8562dd3846",
-    "main.c": "5a8b80986d09e1c3b32802369c383c225805a0768a968e8609b0fd115fe74c1d",
-    "platform.c": "451f772c34d6f03bff2e91a387a33e1bfa8aa0661afb7c80b981b18460ce2702",
-    "platform.h": "4ed847e84a0fff2f1bc440ca8192836252b71f14e60c045b6c1d8343027cf086",
+    "main.c": "cce76ef927ebe00f527975bfaadf8d5161bb1cb3b1c3afcb8f8982144edd8a1a",
+    "platform.c": "cdffa020ce5657add42ca1bb4bef6d5ea0b5125eab2f7abe9dff58ddac473a0d",
+    "platform.h": "531f0ca76d25521dd27f1ae7ab59fff39231bac67ef1d57a54a438f5dc6f306f",
     "start.S": "9c17826af88603b7b8124681159f18b4d4062b5f3e7573201befeee3d3e10966"
   },
   "text_bytes": 9356

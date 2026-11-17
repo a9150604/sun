@@ -381,13 +381,27 @@ int main(void)
     last_overruns = uart_hardware_overruns();
     last_drops = uart_queue_drops();
     bus_init();
+#if CLI_RX_TRACE
+    OUT("\r\nOSFP CLI REWRITE v1 RXTRACE\r\n"
+        "One key at a time; RAW is the word read from IO_RX.\r\n");
+#else
     OUT("\r\nOSFP CLI REWRITE v1 (RV32I WORD IO)\r\n"
         "Type help for commands. Numbers are hex; delay is decimal ms.\r\n");
+#endif
     prompt();
     for (;;) {
         platform_poll();
         (void)check_input_loss();
         if (uart_take(&character) != 0u) {
+#if CLI_RX_TRACE
+            OUT("\r\nRXTRACE RAW="); uart_hex(uart_trace_word(), 8u);
+            OUT(" C="); uart_hex(character, 8u);
+            OUT(" L="); uart_hex(line_length, 2u);
+            OUT(" BAD="); uart_hex(line_bad, 1u);
+            OUT(" HW="); uart_hex(uart_hardware_overruns(), 8u);
+            OUT(" DROP="); uart_hex(uart_queue_drops(), 8u);
+            OUT("\r\n");
+#endif
             if (check_input_loss() == 0u) accept_character(character);
         }
     }

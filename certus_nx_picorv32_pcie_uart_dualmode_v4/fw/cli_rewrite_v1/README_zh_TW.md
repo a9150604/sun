@@ -18,6 +18,8 @@
 
 若繼續使用 CPU 診斷 Top，LED 仍是該 Top 的事件配置；選正式 standalone Top 時，LED0 是 firmware heartbeat，其餘是原測試狀態。低電位點亮的板請維持 LED_ACTIVE_LOW=1，並使用已修正 LED mask 的 Top。
 
+若 Enter 有新的 prompt，但字母沒有顯示或命令沒有結果，可使用獨立的 [RXTRACE 輸入觀測版](RXTRACE_zh_TW.md) 取得讀到的原始字元。一般版 HEX 保持不變。
+
 ## 首次板端測試
 
 先單按 A，應立即回顯 A；再按 Enter 會回覆 ERR unknown command 並重新顯示 osfp>。接著測試：

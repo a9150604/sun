@@ -126,6 +126,8 @@ def main():
         parser.add_argument("--" + name)
     parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--hex-output", type=Path)
+    parser.add_argument("--rx-trace", action="store_true",
+                        help="Build a separate RXTRACE image without replacing the normal CLI HEX")
     args = parser.parse_args()
     cc = tool_path(args.cc, ["riscv64-unknown-elf-gcc", "riscv-none-elf-gcc"],
                    "RISC-V GCC")
@@ -135,17 +137,20 @@ def main():
     for path in sources + [source_dir / "linker.ld"]:
         if not path.is_file():
             raise SystemExit("Missing required source: " + str(path))
-    output_dir = (args.output_dir or project / "build" / "cli_rewrite_v1").resolve()
-    hex_output = (args.hex_output or project / "firmware" / "osfp_cli_rewrite_v1.hex").resolve()
+    firmware_name = "osfp_cli_rewrite_v1_rxtrace" if args.rx_trace else "osfp_cli_rewrite_v1"
+    flags = (*FLAGS, "-DCLI_RX_TRACE=1") if args.rx_trace else FLAGS
+    build_folder = "cli_rewrite_v1_rxtrace" if args.rx_trace else "cli_rewrite_v1"
+    output_dir = (args.output_dir or project / "build" / build_folder).resolve()
+    hex_output = (args.hex_output or project / "firmware" / (firmware_name + ".hex")).resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     hex_output.parent.mkdir(parents=True, exist_ok=True)
 
     objects = []
     for source in sources:
         obj = output_dir / (source.stem + ".o")
-        run([cc, *FLAGS, "-I", source_dir, "-c", source, "-o", obj], project)
+        run([cc, *flags, "-I", source_dir, "-c", source, "-o", obj], project)
         objects.append(obj)
-    stem = output_dir / "osfp_cli_rewrite_v1"
+    stem = output_dir / firmware_name
     elf = stem.with_suffix(".elf")
     binary = stem.with_suffix(".bin")
     map_file = stem.with_suffix(".map")
@@ -153,7 +158,7 @@ def main():
     link_flags = ("-nostdlib", "-Wl,--no-relax", "-Wl,--gc-sections",
                   "-Wl,--build-id=none", "-T", str(source_dir / "linker.ld"),
                   "-Wl,-Map=" + str(map_file))
-    run([cc, *FLAGS, *link_flags, *objects, "-lgcc", "-o", elf], project)
+    run([cc, *flags, *link_flags, *objects, "-lgcc", "-o", elf], project)
     undefined = run([tools["nm"], "-u", elf], project).strip()
     if undefined:
         raise SystemExit("Unresolved firmware symbols:\n" + undefined)
@@ -180,12 +185,12 @@ def main():
         if path.suffix in (".c", ".h", ".S", ".ld", ".py")
     )
     manifest = {
-        "firmware": "osfp_cli_rewrite_v1",
+        "firmware": firmware_name,
         "architecture": "RV32I",
         "abi": "ilp32",
         "compiler": run([cc, "--version"], project).splitlines()[0],
         "objcopy": run([tools["objcopy"], "--version"], project).splitlines()[0],
-        "compiler_flags": list(FLAGS),
+        "compiler_flags": list(flags),
         "link_flags": ["-nostdlib", "--no-relax", "--gc-sections", "--build-id=none", "-lgcc"],
         "ram_bytes": RAM_BYTES,
         "reserved_stack_bytes": STACK_BYTES,

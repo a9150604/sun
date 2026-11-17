@@ -7,6 +7,9 @@
 static uint32_t rx_queue[RX_CAPACITY];
 static uint32_t rx_head, rx_tail, received_count, overrun_count, drop_count;
 static uint32_t overrun_latched;
+#if CLI_RX_TRACE
+static uint32_t trace_taken_word;
+#endif
 static uint32_t clock_hz, ticks_per_ms, max_timeout_ms;
 static uint32_t heartbeat_start, heartbeat_value, led_flags;
 
@@ -59,7 +62,11 @@ static void service_rx(void) {
         overrun_latched = 0u;
     }
     if (status & 1u) {
+#if CLI_RX_TRACE
+        uint32_t character = io_read(IO_RX);
+#else
         uint32_t character = io_read(IO_RX) & 255u;
+#endif
         uint32_t next = (rx_head + 1u) & RX_MASK;
         ++received_count;
         /* A completed data read clears the hardware valid/overrun flags. */
@@ -162,7 +169,12 @@ void uart_hex(uint32_t value, uint32_t digits) {
 uint32_t uart_take(uint32_t *character) {
     platform_poll();
     if (rx_head == rx_tail) return 0u;
+#if CLI_RX_TRACE
+    trace_taken_word = rx_queue[rx_tail];
+    *character = trace_taken_word & 255u;
+#else
     *character = rx_queue[rx_tail];
+#endif
     rx_tail = (rx_tail + 1u) & RX_MASK;
     return 1u;
 }
@@ -170,6 +182,9 @@ uint32_t uart_take(uint32_t *character) {
 uint32_t uart_received(void) { return received_count; }
 uint32_t uart_hardware_overruns(void) { return overrun_count; }
 uint32_t uart_queue_drops(void) { return drop_count; }
+#if CLI_RX_TRACE
+uint32_t uart_trace_word(void) { return trace_taken_word; }
+#endif
 
 void uart_discard_input(void) {
     rx_tail = rx_head;

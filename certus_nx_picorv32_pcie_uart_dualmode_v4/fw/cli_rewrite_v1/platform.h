@@ -2,6 +2,9 @@
 #define NX_CLI_PLATFORM_H
 #include <stdint.h>
 #include <stddef.h>
+#ifndef CLI_RX_TRACE
+#define CLI_RX_TRACE 0
+#endif
 
 #define IO_CLK        0x10000000u
 #define IO_TX         0x10000004u
@@ -44,6 +47,9 @@ uint32_t uart_received(void);
 uint32_t uart_hardware_overruns(void);
 uint32_t uart_queue_drops(void);
 void uart_discard_input(void);
+#if CLI_RX_TRACE
+uint32_t uart_trace_word(void);
+#endif
 
 #define OUT(literal) uart_literal((literal), (uint32_t)(sizeof(literal) - 1u))
 #endif

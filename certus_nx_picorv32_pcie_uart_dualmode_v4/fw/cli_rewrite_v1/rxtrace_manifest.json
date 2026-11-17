@@ -1,0 +1,73 @@
+{
+  "abi": "ilp32",
+  "architecture": "RV32I",
+  "audited_instruction_count": 2405,
+  "binary_sha256": "97ffc442089710468ea77f804789cc9e50cff52ee5b648a9b9fc1cd2c1351e54",
+  "bss_bytes": 1040,
+  "compiler": "riscv64-unknown-elf-gcc (14.2.0+19) 14.2.0",
+  "compiler_flags": [
+    "-march=rv32i",
+    "-mabi=ilp32",
+    "-mno-relax",
+    "-msmall-data-limit=0",
+    "-mno-save-restore",
+    "-mstrict-align",
+    "-Os",
+    "-std=c11",
+    "-ffreestanding",
+    "-fno-builtin",
+    "-fno-stack-protector",
+    "-fno-strict-aliasing",
+    "-fno-tree-loop-distribute-patterns",
+    "-fdata-sections",
+    "-ffunction-sections",
+    "-fno-common",
+    "-fno-unwind-tables",
+    "-fno-asynchronous-unwind-tables",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-DCLI_RX_TRACE=1"
+  ],
+  "data_bytes": 0,
+  "elf_sha256": "12799f68d25eb2acea1d87e7d6481e147adec80a143a6aab8130ac7fcce17003",
+  "firmware": "osfp_cli_rewrite_v1_rxtrace",
+  "hex_sha256": "f82ebb0509444b118f8793b3f7b6b8821403df9c9cdb08faee2f7cdc3dc23697",
+  "initialized_image_bytes": 11512,
+  "instruction_audit": {
+    "byte_halfword_load_stores": false,
+    "compressed_instructions": false,
+    "m_extension_instructions": false,
+    "rv32i_only": true
+  },
+  "link_flags": [
+    "-nostdlib",
+    "--no-relax",
+    "--gc-sections",
+    "--build-id=none",
+    "-lgcc"
+  ],
+  "objcopy": "GNU objcopy (2.44-3+7+b1) 2.44",
+  "ram_bytes": 32768,
+  "ram_image_sha256": "b376d153b5eb14a7e090f8b320ac5859223538381ef30f16595902809014371a",
+  "reserved_stack_bytes": 4096,
+  "rodata_bytes": 1892,
+  "section_bytes": {
+    ".bss": 1040,
+    ".data": 0,
+    ".riscv.attributes": 28,
+    ".rodata": 1892,
+    ".text": 9620
+  },
+  "source_sha256": {
+    "build.py": "f80b134507c270f5b32db97d9fd2fc53b13c45d737cb61705fde3beda40890bf",
+    "i2c.c": "39adb7073fe3337612523c76369300fe001360f1f987abf34b4520737d15ab7e",
+    "i2c.h": "86f6a8b7603aeae33f7e47c79d30e7e16613163c0a889c36e37322d740cb0206",
+    "linker.ld": "b849a9b3776e81433a7e1a9091cbed4455de9b5da7de001839b87a8562dd3846",
+    "main.c": "cce76ef927ebe00f527975bfaadf8d5161bb1cb3b1c3afcb8f8982144edd8a1a",
+    "platform.c": "cdffa020ce5657add42ca1bb4bef6d5ea0b5125eab2f7abe9dff58ddac473a0d",
+    "platform.h": "531f0ca76d25521dd27f1ae7ab59fff39231bac67ef1d57a54a438f5dc6f306f",
+    "start.S": "9c17826af88603b7b8124681159f18b4d4062b5f3e7573201befeee3d3e10966"
+  },
+  "text_bytes": 9620
+}
