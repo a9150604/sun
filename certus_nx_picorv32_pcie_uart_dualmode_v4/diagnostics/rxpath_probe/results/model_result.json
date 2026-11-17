@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "kind": "ideal RV32I machine-code/MMIO model",
+  "test_count": 8,
+  "register_preservation_seeds": 3,
+  "firmware_sha256": "4d577cd804b272cf0ae0fb6b5510bfd6479989404564c16cb8b63894a8f8438c",
+  "test_source_sha256": "a9218436a03e692db28cbe8ee15d5716877e11279d460269255b798b5fc692d6",
+  "command": "python3 diagnostics/rxpath_probe/tests/test_rxpath_probe.py",
+  "fault_fixtures": "Synthetic software-model register/memory/store changes only; not board root-cause claims; absent from downloadable HEX."
+}

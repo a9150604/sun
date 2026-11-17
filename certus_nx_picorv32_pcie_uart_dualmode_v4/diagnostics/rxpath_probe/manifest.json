@@ -1,0 +1,95 @@
+{
+  "base_file": "firmware/osfp_cli_rewrite_v1_rxtrace.hex",
+  "base_sha256": "f82ebb0509444b118f8793b3f7b6b8821403df9c9cdb08faee2f7cdc3dc23697",
+  "output_file": "firmware/osfp_cli_rewrite_v1_rxpath_probe.hex",
+  "output_sha256": "4d577cd804b272cf0ae0fb6b5510bfd6479989404564c16cb8b63894a8f8438c",
+  "ram_bytes": 32768,
+  "probe_start": "0x4000",
+  "probe_bytes": 2284,
+  "snapshot_address": "0x6000",
+  "snapshot_bytes": 60,
+  "original_bss_end": "0x3108",
+  "reserved_stack_start": "0x7000",
+  "stack_top": "0x8000",
+  "patches": {
+    "init": {
+      "address": "0x1408",
+      "original_words": [
+        "fffff097",
+        "1a4080e7"
+      ],
+      "overlay_words": [
+        "00003097",
+        "bf8080e7"
+      ]
+    },
+    "poll": {
+      "address": "0x14c8",
+      "original_words": [
+        "fffff097",
+        "be4080e7"
+      ],
+      "overlay_words": [
+        "00003097",
+        "008080e7"
+      ]
+    },
+    "check": {
+      "address": "0x15e0",
+      "original_words": [
+        "00000097",
+        "c68080e7"
+      ],
+      "overlay_words": [
+        "00003097",
+        "b50080e7"
+      ]
+    },
+    "load": {
+      "address": "0x15f0",
+      "original_words": [
+        "00d00713"
+      ],
+      "overlay_words": [
+        "4a50206f"
+      ]
+    },
+    "append": {
+      "address": "0x2578",
+      "original_words": [
+        "ffffe097",
+        "e34080e7"
+      ],
+      "overlay_words": [
+        "00002097",
+        "e30080e7"
+      ]
+    }
+  },
+  "changed_bytes": 2088,
+  "all_other_original_bytes_preserved": true,
+  "rv32i_word_only_instructions_audited": 533,
+  "sources_sha256": {
+    "rxpath_probe.S": "0ee1d0ba117908f44d485e5d95b558a0e8e6cf1bb0661a4301a86acb22a4fa93",
+    "probe.ld": "fffd4e69bb243b564c4cb277221550436c07519f0e8ac5b32aaf4ecc50236669",
+    "build_probe.py": "6ef46d33ce8656d9e2125d66637e91b5f4d6ed08c7e727cabf1dc8aa9953b4c5"
+  },
+  "snapshot_offsets": {
+    "pending": 0,
+    "RET": 4,
+    "CPOST": 8,
+    "S9": 12,
+    "S4": 16,
+    "S5": 20,
+    "BAD0": 24,
+    "LEN0": 28,
+    "APP": 32,
+    "ECHO": 36,
+    "LENA": 40,
+    "LEN1": 44,
+    "BUF1": 48,
+    "LOAD": 52,
+    "CLOAD": 56
+  },
+  "limitations": "Instrumentation adds stack traffic, RAM transactions and execution time. CPOST is a wrapper read before the original reload; CLOAD records the original load result. ECHO is a call argument, not TX acknowledgement."
+}

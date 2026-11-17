@@ -1,0 +1,213 @@
+{
+  "result": "PASS",
+  "repository": "a9150604/sun",
+  "source_commit": "365fcead5aae84356e2304541c688c7858b503ce",
+  "simulator": "Verilator 5.032 2025-01-01 rev (Debian 5.032-1+b2)",
+  "dut_top": "certus_nx_picorv32_uart_cpu_diag_top",
+  "clock_hz": 125000000,
+  "baud": 115200,
+  "led_active_low": 1,
+  "reset_source": {
+    "type": "user_20bit_por",
+    "hold_clock_edges": 1048575,
+    "por_in_testbench_drives_top_reset_port": true
+  },
+  "input_hex": [
+    "41",
+    "0D",
+    "09",
+    "0D"
+  ],
+  "source_files": {
+    "rtl/user_design/i2c4_pkg.sv": {
+      "bytes": 1278,
+      "sha256": "55292ff00e3944a767da8e47a4683ba341fc72ef19f51dfe9821fba8b73d8a14",
+      "git_blob_sha1": "17e65b8e316a73bd7b5784545511c81fd303a052"
+    },
+    "rtl/user_design/i2c_master_byte.sv": {
+      "bytes": 8781,
+      "sha256": "e37f7e75344f724198c31e9241d4f42215b35984e7b649ec0fcbc0b51c033c05",
+      "git_blob_sha1": "869b21610828809dd3fde6770bbbdf0b3b63f6f8"
+    },
+    "rtl/user_design/i2c_device_ctrl.sv": {
+      "bytes": 6965,
+      "sha256": "e6dcb853399fe0ee7ad72fe857ce8c396c40ddaa99f8a502b3f2aa554fdf8b70",
+      "git_blob_sha1": "e4d3aea7bea2ea11183a0aea1d7d74d6fdc7e11a"
+    },
+    "rtl/user_design/axil_i2c4_regs.sv": {
+      "bytes": 10974,
+      "sha256": "bfc927ad5ce3363345bf7893ed928afb5c9d44554d041ff439344fcd9446c427",
+      "git_blob_sha1": "ae020bdf9804573d0553eba729ccb86b43636100"
+    },
+    "third_party/picorv32.v": {
+      "bytes": 94657,
+      "sha256": "0836050971b3c6cdd28ac3b1e5719a67fb645161912bef1e472e63995ceb0622",
+      "git_blob_sha1": "cc45fa998f1857b06a856ea59b931f6c37e06b34"
+    },
+    "rtl/soc/native_to_axil_master.v": {
+      "bytes": 2393,
+      "sha256": "6baa560a16d1a16938ce7d651871d6acb8e289b950317eb15002202b1cb477c0",
+      "git_blob_sha1": "1c98c013b03f09460d83859d8190d488807b45ca"
+    },
+    "rtl/soc/uart_tx_mmio.v": {
+      "bytes": 1200,
+      "sha256": "199deb10ca4252c43a11d121fd19a61bdb4145a766643b3185c696f1ecfbfa35",
+      "git_blob_sha1": "fe651de058cd49a9a70b9808933ffd1ad443275c"
+    },
+    "rtl/soc/uart_rx_byte.v": {
+      "bytes": 1658,
+      "sha256": "74f712a150d8ac98f11c5cfba07137d37128f010fbab25dd0b5ffa6933dbcbf8",
+      "git_blob_sha1": "b21ba408be4e43e9c0a8d3d0c8fc1ff832153760"
+    },
+    "rtl/soc/axil_master_mode_mux.sv": {
+      "bytes": 2423,
+      "sha256": "f390073e717c068b71546e15d75f83432b3ec53666032f25c9a73c8a310d9aba",
+      "git_blob_sha1": "1a36a87d7cc95db67b50adf7f3b6872bc0c0c0bb"
+    },
+    "rtl/soc/axil_owner_switch.v": {
+      "bytes": 1511,
+      "sha256": "f33ba758197622a803ff02e8065e047a3d27418029124c286be1adf39b725fe7",
+      "git_blob_sha1": "a5debfd32eecd3b260adf04af0c6fc2cd93f1982"
+    },
+    "diagnostics/uart_cpu_trace/picorv32_cpu_axil_uart_diag.v": {
+      "bytes": 7876,
+      "sha256": "f34c911659a35f583a45151f693924836cabd60b243b3416692e28c8898875b7",
+      "git_blob_sha1": "ceb0948af6841d24adc174d09c15a2ad6f9d16cc"
+    },
+    "diagnostics/uart_cpu_trace/pcie_i2c4_top_cpu_diag_fabric.sv": {
+      "bytes": 4854,
+      "sha256": "c4fc64ccc436af85aa1fd6bfc76425a030cffc83a739afa6b6c698dbd36f38dd",
+      "git_blob_sha1": "cde1ae33192e99b640632047b4ef24621447aa4c"
+    },
+    "diagnostics/uart_cpu_trace/certus_nx_picorv32_uart_cpu_diag_top.sv": {
+      "bytes": 1829,
+      "sha256": "648d3cc25b026fb2b35a419ee86c0870e1ea8c1786639440205c6042153d6408",
+      "git_blob_sha1": "083cc57d62b96de64802c4d35337d6b2fccbc08d"
+    },
+    "firmware/osfp_cli_rewrite_v1_rxtrace.hex": {
+      "bytes": 73728,
+      "sha256": "f82ebb0509444b118f8793b3f7b6b8821403df9c9cdb08faee2f7cdc3dc23697",
+      "git_blob_sha1": "3001da8165c803c85d9cb77f001b8bb34346d30a"
+    }
+  },
+  "dut_sources_unmodified": true,
+  "firmware": {
+    "path": "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/firmware/osfp_cli_rewrite_v1_rxpath_probe.hex",
+    "bytes": 73728,
+    "sha256": "4d577cd804b272cf0ae0fb6b5510bfd6479989404564c16cb8b63894a8f8438c",
+    "git_blob_sha1": "5737599a4b16f080a45c5c4a1eeb4df360105661"
+  },
+  "testbench": {
+    "path": "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/rxpath_probe/tests/tb_rxpath_probe.sv",
+    "bytes": 6977,
+    "sha256": "9417122262fa25e32c86d2d5fc8363560d470936c733a747b90d16233564649a",
+    "git_blob_sha1": "15cb0ea5940356bf87e20203c214c72380f41dc4"
+  },
+  "runner": {
+    "path": "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/rxpath_probe/tests/run_rtl.py",
+    "bytes": 8468,
+    "sha256": "a56b75208ef1ee8d1989cfa964dd3924e26d70d7c0957699a306a26485bcff03",
+    "git_blob_sha1": "18de097d291dbc1734755b6d724a0c59c77cd60c"
+  },
+  "compile_command": [
+    "/workspace/sun-inspection/tools/verilator/root/usr/bin/verilator",
+    "--binary",
+    "--timing",
+    "-Wno-fatal",
+    "--top-module",
+    "tb_rxpath_probe",
+    "--Mdir",
+    "/workspace/sun-inspection/diagnostics/rxpath-probe-test/portable/obj",
+    "-j",
+    "2",
+    "-GCLOCK_HZ=125000000",
+    "-GBAUD=115200",
+    "-DTEST_CPU_DIAG",
+    "-DTEST_USER_POR",
+    "-GFIRMWARE_HEX=\"/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/firmware/osfp_cli_rewrite_v1_rxpath_probe.hex\"",
+    "rtl/user_design/i2c4_pkg.sv",
+    "rtl/user_design/i2c_master_byte.sv",
+    "rtl/user_design/i2c_device_ctrl.sv",
+    "rtl/user_design/axil_i2c4_regs.sv",
+    "third_party/picorv32.v",
+    "rtl/soc/native_to_axil_master.v",
+    "rtl/soc/uart_tx_mmio.v",
+    "rtl/soc/uart_rx_byte.v",
+    "rtl/soc/axil_master_mode_mux.sv",
+    "rtl/soc/axil_owner_switch.v",
+    "diagnostics/uart_cpu_trace/picorv32_cpu_axil_uart_diag.v",
+    "diagnostics/uart_cpu_trace/pcie_i2c4_top_cpu_diag_fabric.sv",
+    "diagnostics/uart_cpu_trace/certus_nx_picorv32_uart_cpu_diag_top.sv",
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/rxpath_probe/tests/tb_rxpath_probe.sv"
+  ],
+  "limitations": "RTL wire simulation with ideal clock and supplied POR; not the full modified board Top, Radiant netlist, or FPGA startup model.",
+  "uart_bytes": 1286,
+  "uart_sha256": "420da1c86319546fc266ef171a3d534803afb5861ef5cd1eeded2ec0b630fb05",
+  "observed_snapshots": [
+    {
+      "RET": 0,
+      "CPOST": 65,
+      "LOAD": 1,
+      "CLOAD": 65,
+      "S9": 9,
+      "S4": 12288,
+      "S5": 12288,
+      "BAD0": 0,
+      "LEN0": 0,
+      "APP": 1,
+      "ECHO": 65,
+      "LENA": 1,
+      "LEN1": 1,
+      "BUF1": 65
+    },
+    {
+      "RET": 0,
+      "CPOST": 13,
+      "LOAD": 1,
+      "CLOAD": 13,
+      "S9": 9,
+      "S4": 12288,
+      "S5": 12288,
+      "BAD0": 0,
+      "LEN0": 1,
+      "APP": 0,
+      "ECHO": 0,
+      "LENA": 0,
+      "LEN1": 0,
+      "BUF1": 65
+    },
+    {
+      "RET": 0,
+      "CPOST": 9,
+      "LOAD": 1,
+      "CLOAD": 9,
+      "S9": 9,
+      "S4": 12288,
+      "S5": 12288,
+      "BAD0": 0,
+      "LEN0": 0,
+      "APP": 1,
+      "ECHO": 9,
+      "LENA": 1,
+      "LEN1": 1,
+      "BUF1": 9
+    },
+    {
+      "RET": 0,
+      "CPOST": 13,
+      "LOAD": 1,
+      "CLOAD": 13,
+      "S9": 9,
+      "S4": 12288,
+      "S5": 12288,
+      "BAD0": 0,
+      "LEN0": 1,
+      "APP": 0,
+      "ECHO": 0,
+      "LENA": 0,
+      "LEN1": 0,
+      "BUF1": 9
+    }
+  ],
+  "base_firmware_unchanged": true
+}

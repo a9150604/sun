@@ -1,0 +1,25 @@
+Config: RXPATH real CPU CLK=125000000 BAUD=115200 TX wire decoding
+PASS: user POR released after 1048575 clock edges at           8388596000
+Progress          10000000000: decoded TX=17 prompts=0 RX=0
+Progress          20000000000: decoded TX=129 prompts=0 RX=0
+Wire-decoded prompt 1 at          22060917000; TX bytes=153
+Progress          30000000000: decoded TX=230 prompts=1 RX=1
+Progress          40000000000: decoded TX=343 prompts=1 RX=1
+A complete, output bytes=426
+Progress          50000000000: decoded TX=443 prompts=1 RX=2
+Wire-decoded prompt 2 at          57908749000; TX bytes=533
+Progress          60000000000: decoded TX=556 prompts=2 RX=2
+Progress          70000000000: decoded TX=669 prompts=2 RX=2
+First CR complete, output bytes=733
+Progress          80000000000: decoded TX=770 prompts=2 RX=3
+Progress          90000000000: decoded TX=883 prompts=2 RX=3
+Progress         100000000000: decoded TX=996 prompts=2 RX=3
+TAB complete, output bytes=1006
+Wire-decoded prompt 3 at         109045917000; TX bytes=1086
+Progress         110000000000: decoded TX=1096 prompts=3 RX=4
+Progress         120000000000: decoded TX=1209 prompts=3 RX=4
+PASS: RXPATH serial sequence A/CR/TAB/CR, trap=0 overrun=0 RX=4 TX=1286
+- /workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/rxpath_probe/tests/tb_rxpath_probe.sv:194: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 128ms; walltime 13.321 s; speed 9.609 ms/s
+- Verilator: cpu 13.295 s on 1 threads; alloced 17 MB
