@@ -26,8 +26,9 @@
 
 ## 注意
 
-1. 官方 `picorv32.v` **未打包**。請由 https://github.com/YosysHQ/picorv32
-   取得官方 `picorv32.v`，放到 `third_party/picorv32.v`。
+1. 官方 `picorv32.v` 已隨附於 `third_party/picorv32.v`，固定為 UART／CLI
+   整合模擬使用的版本；來源、校驗值與 Radiant 加入方式見
+   [PicoRV32 說明](third_party/README_picorv32_zh_TW.md)。
 2. 你的原 `pcie_i2c4_top.sv` 沒有完整 PCIe IP generated wrapper，
    需按實際 IP port 把 `pcie_i2c4_top_cpu_fabric` 接入。未宣稱可直接
    取代原 Top 即 compile。
@@ -38,3 +39,4 @@
 5. I2C Master 為單 byte direct operation，CMIS 跨 page/bank 及
    multi-byte atomic 操作未完整支援。
 6. 本套件尚未經開發板、Radiant 或 QuestaSim 測試認證。
+
