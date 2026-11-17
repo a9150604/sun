@@ -7,10 +7,14 @@
 1. 保持 Top 為 **certus_nx_picorv32_uart_cpu_diag_top**，沿用目前 CPU、RTL、PDC、clock 與 LED 設定。
 2. 下載本專案 firmware/uart_cpu_probe.hex，將 Radiant 的 **FIRMWARE_HEX 改為 firmware/uart_cpu_probe.hex**，確認該檔能被 synthesis 找到。
 3. 重新 synthesis、map、PAR、產生 bitstream 並燒錄。HEX 內容會嵌入 FPGA RAM 初始化，須隨新 bitstream 載入。
-4. 終端機仍用 115200／8N1／Flow control=None。清空畫面、重置，預期先看到 CPU_UART_PROBE v1，接著是記憶體檢查與 RX READY。
+4. 終端機仍用 115200／8N1／Flow control=None。清空畫面、重置，預期先看到 CPU_UART_PROBE v2，接著是記憶體檢查與 RX READY。
 5. 等 RX READY 後慢速按一次 A，再按 Enter。請貼上完整開機檢查文字，以及按鍵後的 RX 回報。A 的原始數值應為 0x41；Enter 通常為 0x0D 或 0x0A。
 
 這不是原 CLI，不會顯示 osfp>。探針不執行原 CLI 的韌體 heartbeat，LED0 可能不閃；以 UART 文字判讀。
+
+v2 在沒有讀到有效輸入時，依 IO_CLK／IO_CYCLES 約每秒印出 WAIT ST=xxxxxxxx M=xxxxxxxx。ST 是 CPU 讀到的 RXSTATUS，M 是同次 status & 1 的結果；正常空閒時兩者都為 00000000。按 A 後正常應出現 RX ST=00000001 DATA=00000041。請一併回報按鍵前後的 WAIT／RX 行。
+
+此版本針對已觀察到的「硬體收到 A、CPU 未完成 data read、第二個字元 overrun」取得 CPU 實際讀值；LED6 只證明曾完成 status read，不能單靠它判定 CPU 讀到了 bit0=1。
 
 ## 預期讀值
 
@@ -55,6 +59,7 @@ build_probe.py 使用 Python 標準函式庫產生 RV32I 程式，不需要 C �
 
 - 自含 RV32I 解譯器與既有 RV32IM 解譯器：298-byte 開機輸出與 expected_output.txt 完全一致；A／CR 分別回報 DATA=00000041／0000000D。
 - 真 CPU／原 SoC 診斷 RTL 整合回歸：125 MHz／1,000,000 baud（加速模擬）。四組 LW／LBU、三個 NUL 與零值分支、checksum、原 puts 停止位置皆正確。Serial RX 注入 A／CR，兩次 data read、trap=0、無 overrun；TX 文字在 tx_fire 握手處記錄。
-- 探針只覆蓋 reset word 與 0x400..0xF1B，原 puts 與 0x1000 後所有資料逐 byte 保留。原 interactive.hex 未改動。
+- v2 探針只覆蓋 reset word 與 0x400..0xFB7（3000 bytes），原 puts 與 0x1000 後所有資料逐 byte 保留。原 interactive.hex 未改動。
+- 自含解譯器驗證 WAIT 不提前／不連續洗版、cycle counter wrap 正常。真 CPU RTL 的額外 WAIT 測試以人工推進 uptime counter 觸發，輸出 ST=0／M=0 後仍能接收 A／CR；這是分支驗證，不是真實模擬一秒。
 
 板端仍使用 115200。整合模擬使用官方 PicoRV32 ef203c2b0a3fb793280f5114941416c425c5b461 與 Icarus 相容用 I2C enum 等價複本，不代表使用者實際 CPU／Radiant 實作已通過。此探針尚待使用者實板回報。

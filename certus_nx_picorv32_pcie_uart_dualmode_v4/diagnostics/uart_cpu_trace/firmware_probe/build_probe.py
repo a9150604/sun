@@ -95,8 +95,8 @@ class Assembler:
     def store(self, rs, base, offset=0):
         self.emit(s_type(base, rs, offset))
 
-    def alu(self, rd, rs1, rs2, f3):
-        self.emit((rs2 << 20) | (rs1 << 15) | (f3 << 12) | (rd << 7) | 0x33)
+    def alu(self, rd, rs1, rs2, f3, f7=0):
+        self.emit((f7 << 25) | (rs2 << 20) | (rs1 << 15) | (f3 << 12) | (rd << 7) | 0x33)
 
     def branch(self, rs1, rs2, f3, target):
         self.fixups.append((len(self.words), 'branch', (rs1, rs2, f3, target)))
@@ -156,8 +156,8 @@ def build(base, origin=0x400, with_puts=True):
     a.li(SP, RAM_BYTES)
     a.li(UART, 0x10000000)
     a.li(FAIL, 0)
-    a.text('CPU_UART_PROBE v1\r\n')
-    golden = 'CPU_UART_PROBE v1\r\n'
+    a.text('CPU_UART_PROBE v2\r\n')
+    golden = 'CPU_UART_PROBE v2\r\n'
 
     for address, expected in zip(WORD_ADDRESSES, EXPECTED_WORDS):
         a.li(29, address)
@@ -231,12 +231,25 @@ def build(base, origin=0x400, with_puts=True):
     a.load(9, UART, 0x1c)
     a.text('RX INITIAL ST=')
     a.hex(9)
+    a.load(26, UART, 0x00)  # s10: one-second period from the actual CLK_HZ MMIO.
+    a.load(24, UART, 0x0c)  # s8: cycle timestamp, survives text/hex routines.
     a.text('\r\nRX READY\r\n')
     golden += 'RX INITIAL ST=00000000\r\nRX READY\r\n'
     a.label('rx_poll')
     a.load(9, UART, 0x1c)
-    a.andi(5, 9, 1)
-    a.branch(5, 0, 0, 'rx_poll')
+    a.andi(25, 9, 1)  # s9 preserves this exact status mask through hex output.
+    a.branch(25, 0, 1, 'rx_data')
+    a.load(22, UART, 0x0c)
+    a.alu(23, 22, 24, 0, 0x20)  # SUB; unsigned delta is safe across cycle wrap.
+    a.branch(23, 26, 6, 'rx_poll')
+    a.mov(24, 22)
+    a.text('WAIT ST=')
+    a.hex(9)
+    a.text(' M=')
+    a.hex(25)
+    a.text('\r\n')
+    a.jump('rx_poll')
+    a.label('rx_data')
     a.load(18, UART, 0x18)
     a.text('RX ST=')
     a.hex(9)
@@ -277,6 +290,8 @@ def build(base, origin=0x400, with_puts=True):
         'original_puts_test_enabled': with_puts,
         'original_puts_entry': PUTS_START, 'original_puts_end_exclusive': PUTS_END,
         'original_puts_preserved': True,
+        'probe_version': 2,
+        'wait_report': {'format': 'WAIT ST=xxxxxxxx M=xxxxxxxx', 'period_cycles_source': 'IO_CLK 0x10000000', 'timestamp_source': 'IO_CYCLES 0x1000000c', 'only_on_no_data_path': True},
         'expected_words': {f'{addr:04x}': f'{word:08x}' for addr, word in zip(WORD_ADDRESSES, EXPECTED_WORDS)},
         'nul_addresses': [f'{addr:04x}' for addr in NUL_ADDRESSES],
         'checksum_range': {'start': CHECK_START, 'end_exclusive': CHECK_END, 'words': len(words), 'sum32': f'{EXPECTED_SUM:08x}', 'xor32': f'{EXPECTED_XOR:08x}'},

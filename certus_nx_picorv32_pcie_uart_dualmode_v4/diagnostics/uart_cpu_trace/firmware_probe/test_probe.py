@@ -27,6 +27,7 @@ class ProbeCPU:
         self.output = bytearray()
         self.instructions = 0
         self.rx_reads = 0
+        self.cycle_offset = 0
 
     def load(self, address, size):
         assert size == 1 or address % 4 == 0, f'Unaligned load {address:08x}'
@@ -40,6 +41,8 @@ class ProbeCPU:
             return self.rx.popleft() if self.rx else 0
         if address == 0x10000000:
             return 125000000
+        if address == 0x1000000c:
+            return (self.cycle_offset + self.instructions * 4) & MASK
         raise AssertionError(f'Unexpected MMIO read {address:08x}')
 
     def step(self):
@@ -61,12 +64,15 @@ class ProbeCPU:
             else:
                 raise AssertionError(f'Unexpected OP-IMM {ins:08x}')
         elif op == 0x33:
-            assert ins >> 25 == 0
+            f7 = ins >> 25
+            assert f7 in (0, 0x20)
             if f3 == 0:
-                value = left + right
+                value = left - right if f7 == 0x20 else left + right
             elif f3 == 4:
+                assert f7 == 0
                 value = left ^ right
             elif f3 == 5:
+                assert f7 == 0
                 value = left >> (right & 31)
             else:
                 raise AssertionError(f'Unexpected OP {ins:08x}')
@@ -127,6 +133,22 @@ def main():
     assert b'DIRECT_READ' not in cpu.output
     assert b'PUTS_BEGIN\r\n\r\nPUTS_END\r\n' in cpu.output
     print('PASS: exact boot output, LW/LBU words, NUL branches, checksums and original uart_puts stop at first NUL')
+    before = len(cpu.output)
+    for _ in range(1000):
+        cpu.step()
+    assert len(cpu.output) == before, 'WAIT output appeared before its one-second period'
+    cpu.cycle_offset += 125000000
+    cpu.run_until(lambda: bytes(cpu.output[before:]) == b'WAIT ST=00000000 M=00000000\r\n')
+    print('PASS: one-second no-data WAIT reports raw status=0 and exact mask=0')
+    before = len(cpu.output)
+    for _ in range(1000):
+        cpu.step()
+    assert len(cpu.output) == before, 'WAIT output repeats without another elapsed second'
+    # Exercise the same unsigned subtraction across a 32-bit uptime wrap.
+    cpu.x[24] = 0xffffff00
+    cpu.cycle_offset = (0xffffff00 - cpu.instructions * 4 + 125000000) & MASK
+    cpu.run_until(lambda: bytes(cpu.output[before:]) == b'WAIT ST=00000000 M=00000000\r\n')
+    print('PASS: WAIT does not flood, and unsigned elapsed-time check tolerates cycle-counter wrap')
     for byte in (0x41, 0x0d):
         before = len(cpu.output)
         cpu.rx.append(byte)
