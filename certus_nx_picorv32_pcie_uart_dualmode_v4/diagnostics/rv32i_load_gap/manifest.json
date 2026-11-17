@@ -1,0 +1,317 @@
+{
+  "kind": "targeted formatter load/use-gap diagnostic, not a hardware fix",
+  "base_inputs_sha256": {
+    "firmware/rv32i_hw_selftest.hex": "41918e6e02702f892d1773b38c76bd7b82fcc65863f52cc3c528818170e84a2a",
+    "diagnostics/rv32i_hw_selftest/selftest.S": "45e9470977547f4a94801f7992c8a1b89e7489b51b91ba747b023ed99d89950e",
+    "diagnostics/rv32i_hw_selftest/link.ld": "f0de31473c2141d30bcf34d5e96d037cb2b3007e1d403fd18a493b523d089e14",
+    "diagnostics/rv32i_hw_selftest/build_selftest.py": "2a4b36ed00d36efd62ce0e8ef1ecd155781d26c78eba60396cb0e27cfedea013",
+    "diagnostics/rv32i_hw_selftest/manifest.json": "f4951dee693025a0db4c7e44d0465f2f960725dacaac7c9b119460b9bc7515b1",
+    "diagnostics/rv32i_hw_selftest/expected_output.txt": "cc585ac1609f1f7f46cf93568b24bc95a69214fb20c28cfa0551ecbd1d26cd3c",
+    "diagnostics/rv32i_hw_selftest/expected_protocol.json": "a9ca06ada336be7dda9d87998fc31061c97f7bc49b18e4f636b452bf1f0ec5cb"
+  },
+  "base_inputs_unchanged": true,
+  "output_file": "firmware/rv32i_hw_selftest_gap1.hex",
+  "output_sha256": "b3348414f21d5d20d26c802f33015bd765323312ea59878e9ebb7e2816a76881",
+  "header": "RV32I HW SELFTEST G1",
+  "inserted_nops": 8,
+  "gap_scope": "one NOP after each of eight formatter LW t1,0(t0), before SW t1,0(s0); other loads unchanged",
+  "gap_sites": [
+    {
+      "base_load_pc": "0x1e70",
+      "gap_load_pc": "0x1e70",
+      "nop_pc": "0x1e74",
+      "gap_consumer_pc": "0x1e78"
+    },
+    {
+      "base_load_pc": "0x1e88",
+      "gap_load_pc": "0x1e8c",
+      "nop_pc": "0x1e90",
+      "gap_consumer_pc": "0x1e94"
+    },
+    {
+      "base_load_pc": "0x1ea0",
+      "gap_load_pc": "0x1ea8",
+      "nop_pc": "0x1eac",
+      "gap_consumer_pc": "0x1eb0"
+    },
+    {
+      "base_load_pc": "0x1eb8",
+      "gap_load_pc": "0x1ec4",
+      "nop_pc": "0x1ec8",
+      "gap_consumer_pc": "0x1ecc"
+    },
+    {
+      "base_load_pc": "0x1ed0",
+      "gap_load_pc": "0x1ee0",
+      "nop_pc": "0x1ee4",
+      "gap_consumer_pc": "0x1ee8"
+    },
+    {
+      "base_load_pc": "0x1ee8",
+      "gap_load_pc": "0x1efc",
+      "nop_pc": "0x1f00",
+      "gap_consumer_pc": "0x1f04"
+    },
+    {
+      "base_load_pc": "0x1f00",
+      "gap_load_pc": "0x1f18",
+      "nop_pc": "0x1f1c",
+      "gap_consumer_pc": "0x1f20"
+    },
+    {
+      "base_load_pc": "0x1f18",
+      "gap_load_pc": "0x1f34",
+      "nop_pc": "0x1f38",
+      "gap_consumer_pc": "0x1f3c"
+    }
+  ],
+  "main_word_changes": [
+    "0xc",
+    "0xb0"
+  ],
+  "main_changes_reason": "Header v->G and relocated hex_digits table pointer",
+  "main_branch_addresses_unchanged": true,
+  "modified_assembly_sha256": "fbd073e48768afe0af759f45a2b40279afc629b6bd0932e3661de07fc655360b",
+  "expected_output_bytes": 928,
+  "expected_output_sha256": "1e46d8e76ddf466b90df75a1f40d91689f9ea3eaf41717b1005d1ae8418b9326",
+  "sources_sha256": {
+    "build_gap.py": "edd1246a9b76b9b794765d3fb03e4b72dd16a4c0a50482f28924665d9b3a4503",
+    "expected_output.txt": "1e46d8e76ddf466b90df75a1f40d91689f9ea3eaf41717b1005d1ae8418b9326",
+    "expected_protocol.json": "a9ca06ada336be7dda9d87998fc31061c97f7bc49b18e4f636b452bf1f0ec5cb"
+  },
+  "build_audit": {
+    "output_file": "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/firmware/rv32i_hw_selftest_gap1.hex",
+    "output_sha256": "b3348414f21d5d20d26c802f33015bd765323312ea59878e9ebb7e2816a76881",
+    "ram_bytes": 32768,
+    "program_bytes": 8068,
+    "program_end": "0x1f84",
+    "instructions_audited": 2001,
+    "stack_memory_accesses": 0,
+    "stack_pointer_writes": 0,
+    "nested_formatter_calls": 0,
+    "uart_address": "0x10000004",
+    "uart_write_uses_wrapper_backpressure": true,
+    "no_uart_ready_poll_branch": true,
+    "no_input_required": true,
+    "output_once_then_halt": true,
+    "halt_address": "0x1e5c",
+    "expected_output_bytes": 928,
+    "expected_output_sha256": "1e46d8e76ddf466b90df75a1f40d91689f9ea3eaf41717b1005d1ae8418b9326",
+    "expected_output_lines": [
+      "",
+      "RV32I HW SELFTEST G1",
+      "CONST1=13579BDF",
+      "CONST2=5A5AA5A5",
+      "S4=00003000",
+      "S5=00003000",
+      "S9=00000009",
+      "X16=A5100010",
+      "X17=A5110011",
+      "X18=A5120012",
+      "X19=A5130013",
+      "X20=A5140014",
+      "X21=A5150015",
+      "X22=A5160016",
+      "X23=A5170017",
+      "X24=A5180018",
+      "X25=A5190019",
+      "X26=A51A001A",
+      "X27=A51B001B",
+      "X28=A51C001C",
+      "X29=A51D001D",
+      "X30=A51E001E",
+      "X31=A51F001F",
+      "RAM3000_Z=00000000",
+      "RAM3000_P1=11223344",
+      "RAM3000_P2=A5C35A96",
+      "RAM3800_Z=00000000",
+      "RAM3800_P1=11223344",
+      "RAM3800_P2=A5C35A96",
+      "RAM6000_Z=00000000",
+      "RAM6000_P1=11223344",
+      "RAM6000_P2=A5C35A96",
+      "RAM7ED0_Z=00000000",
+      "RAM7ED0_P1=11223344",
+      "RAM7ED0_P2=A5C35A96",
+      "RAM7F00_Z=00000000",
+      "RAM7F00_P1=11223344",
+      "RAM7F00_P2=A5C35A96",
+      "ADDR2000=C3002000",
+      "ADDR3000=C3003000",
+      "ADDR3800=C3003800",
+      "ADDR6000=C3006000",
+      "ADDR7ED0=C3007ED0",
+      "ADDR7F00=C3007F00",
+      "BEQ_ZERO=T",
+      "BNE_ZERO=F",
+      "BEQ_TAB=T",
+      "BNE_TAB=F",
+      "BEQ_A=T",
+      "BNE_DIFF=T",
+      "BLTU_RANGE=T",
+      "BGEU_RANGE=T",
+      "BLTU_REVERSE=F",
+      "BGEU_REVERSE=F",
+      "BEQ_LONG_ZERO=T",
+      "BNE_LONG_ZERO=F",
+      "BNE_LONG_NINE=T",
+      "END"
+    ],
+    "protocol": {
+      "branch_tests": [
+        {
+          "label": "BEQ_ZERO",
+          "instruction": "beq",
+          "left": 0,
+          "right": 0,
+          "expected": "T",
+          "instruction_address": "0x1090",
+          "target_address": "0x10a0"
+        },
+        {
+          "label": "BNE_ZERO",
+          "instruction": "bne",
+          "left": 0,
+          "right": 0,
+          "expected": "F",
+          "instruction_address": "0x1108",
+          "target_address": "0x1118"
+        },
+        {
+          "label": "BEQ_TAB",
+          "instruction": "beq",
+          "left": 9,
+          "right": 9,
+          "expected": "T",
+          "instruction_address": "0x1178",
+          "target_address": "0x1188"
+        },
+        {
+          "label": "BNE_TAB",
+          "instruction": "bne",
+          "left": 9,
+          "right": 9,
+          "expected": "F",
+          "instruction_address": "0x11e8",
+          "target_address": "0x11f8"
+        },
+        {
+          "label": "BEQ_A",
+          "instruction": "beq",
+          "left": 65,
+          "right": 65,
+          "expected": "T",
+          "instruction_address": "0x1248",
+          "target_address": "0x1258"
+        },
+        {
+          "label": "BNE_DIFF",
+          "instruction": "bne",
+          "left": 9,
+          "right": 65,
+          "expected": "T",
+          "instruction_address": "0x12c0",
+          "target_address": "0x12d0"
+        },
+        {
+          "label": "BLTU_RANGE",
+          "instruction": "bltu",
+          "left": 33,
+          "right": 94,
+          "expected": "T",
+          "instruction_address": "0x1348",
+          "target_address": "0x1358"
+        },
+        {
+          "label": "BGEU_RANGE",
+          "instruction": "bgeu",
+          "left": 94,
+          "right": 33,
+          "expected": "T",
+          "instruction_address": "0x13d0",
+          "target_address": "0x13e0"
+        },
+        {
+          "label": "BLTU_REVERSE",
+          "instruction": "bltu",
+          "left": 94,
+          "right": 33,
+          "expected": "F",
+          "instruction_address": "0x1468",
+          "target_address": "0x1478"
+        },
+        {
+          "label": "BGEU_REVERSE",
+          "instruction": "bgeu",
+          "left": 33,
+          "right": 94,
+          "expected": "F",
+          "instruction_address": "0x1500",
+          "target_address": "0x1510"
+        },
+        {
+          "label": "BEQ_LONG_ZERO",
+          "instruction": "beq",
+          "left": 0,
+          "right": 0,
+          "expected": "T",
+          "target_offset": 632,
+          "instruction_address": "0x159c",
+          "target_address": "0x1814"
+        },
+        {
+          "label": "BNE_LONG_ZERO",
+          "instruction": "bne",
+          "left": 0,
+          "right": 0,
+          "expected": "F",
+          "target_offset": 632,
+          "instruction_address": "0x18a0",
+          "target_address": "0x1b18"
+        },
+        {
+          "label": "BNE_LONG_NINE",
+          "instruction": "bne",
+          "left": 9,
+          "right": 0,
+          "expected": "T",
+          "target_offset": 632,
+          "instruction_address": "0x1ba4",
+          "target_address": "0x1e1c"
+        }
+      ],
+      "ram_addresses": [
+        "0x3000",
+        "0x3800",
+        "0x6000",
+        "0x7ed0",
+        "0x7f00"
+      ],
+      "ram_patterns": [
+        "0x0",
+        "0x11223344",
+        "0xa5c35a96"
+      ],
+      "address_distinct_pattern": "0xc3000000 | address",
+      "output_bytes": 928,
+      "address_distinct_addresses": [
+        "0x2000",
+        "0x3000",
+        "0x3800",
+        "0x6000",
+        "0x7ed0",
+        "0x7f00"
+      ],
+      "long_branch_guard_padding": "JAL x0,0 selfloops; wrong taken targets into guard area do not fall through"
+    },
+    "sources_sha256": {
+      "selftest.S": "fbd073e48768afe0af759f45a2b40279afc629b6bd0932e3661de07fc655360b",
+      "link.ld": "f0de31473c2141d30bcf34d5e96d037cb2b3007e1d403fd18a493b523d089e14",
+      "build_selftest.py": "2a4b36ed00d36efd62ce0e8ef1ecd155781d26c78eba60396cb0e27cfedea013",
+      "expected_output.txt": "1e46d8e76ddf466b90df75a1f40d91689f9ea3eaf41717b1005d1ae8418b9326",
+      "expected_protocol.json": "a9ca06ada336be7dda9d87998fc31061c97f7bc49b18e4f636b452bf1f0ec5cb"
+    },
+    "limitations": "This diagnostic changes code layout and execution timing. Correct output does not prove the CLI build or physical hardware is fault-free."
+  },
+  "limitations": "NOP changes timing and placement. A successful output narrows a load/use dependency issue but does not establish a hardware root cause or repair."
+}

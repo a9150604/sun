@@ -1,0 +1,17 @@
+Config: real CPU selftest CLK=125000000 BAUD=115200 RX=idle TX wire decoding
+PASS: user POR released after 1048575 clock edges at           8388596000
+Progress          10000000000: decoded TX=18 END=0 RX=0
+Progress          20000000000: decoded TX=133 END=0 RX=0
+Progress          30000000000: decoded TX=249 END=0 RX=0
+Progress          40000000000: decoded TX=364 END=0 RX=0
+Progress          50000000000: decoded TX=479 END=0 RX=0
+Progress          60000000000: decoded TX=594 END=0 RX=0
+Progress          70000000000: decoded TX=709 END=0 RX=0
+Progress          80000000000: decoded TX=824 END=0 RX=0
+Wire-decoded END at          88942317000; TX bytes=928
+Progress          90000000000: decoded TX=928 END=1 RX=0
+PASS: selftest END, no extra output for 2 ms, trap=0 overrun=0 RX=0 TX=928
+- /workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/rv32i_hw_selftest/tests/tb_hw_selftest.sv:101: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 91ms; walltime 9.552 s; speed 9.536 ms/s
+- Verilator: cpu 9.537 s on 1 threads; alloced 17 MB

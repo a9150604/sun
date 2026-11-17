@@ -1,0 +1,121 @@
+{
+  "branch_tests": [
+    {
+      "label": "BEQ_ZERO",
+      "instruction": "beq",
+      "left": 0,
+      "right": 0,
+      "expected": "T"
+    },
+    {
+      "label": "BNE_ZERO",
+      "instruction": "bne",
+      "left": 0,
+      "right": 0,
+      "expected": "F"
+    },
+    {
+      "label": "BEQ_TAB",
+      "instruction": "beq",
+      "left": 9,
+      "right": 9,
+      "expected": "T"
+    },
+    {
+      "label": "BNE_TAB",
+      "instruction": "bne",
+      "left": 9,
+      "right": 9,
+      "expected": "F"
+    },
+    {
+      "label": "BEQ_A",
+      "instruction": "beq",
+      "left": 65,
+      "right": 65,
+      "expected": "T"
+    },
+    {
+      "label": "BNE_DIFF",
+      "instruction": "bne",
+      "left": 9,
+      "right": 65,
+      "expected": "T"
+    },
+    {
+      "label": "BLTU_RANGE",
+      "instruction": "bltu",
+      "left": 33,
+      "right": 94,
+      "expected": "T"
+    },
+    {
+      "label": "BGEU_RANGE",
+      "instruction": "bgeu",
+      "left": 94,
+      "right": 33,
+      "expected": "T"
+    },
+    {
+      "label": "BLTU_REVERSE",
+      "instruction": "bltu",
+      "left": 94,
+      "right": 33,
+      "expected": "F"
+    },
+    {
+      "label": "BGEU_REVERSE",
+      "instruction": "bgeu",
+      "left": 33,
+      "right": 94,
+      "expected": "F"
+    },
+    {
+      "label": "BEQ_LONG_ZERO",
+      "instruction": "beq",
+      "left": 0,
+      "right": 0,
+      "expected": "T",
+      "target_offset": 632
+    },
+    {
+      "label": "BNE_LONG_ZERO",
+      "instruction": "bne",
+      "left": 0,
+      "right": 0,
+      "expected": "F",
+      "target_offset": 632
+    },
+    {
+      "label": "BNE_LONG_NINE",
+      "instruction": "bne",
+      "left": 9,
+      "right": 0,
+      "expected": "T",
+      "target_offset": 632
+    }
+  ],
+  "ram_addresses": [
+    "0x3000",
+    "0x3800",
+    "0x6000",
+    "0x7ed0",
+    "0x7f00"
+  ],
+  "ram_patterns": [
+    "0x0",
+    "0x11223344",
+    "0xa5c35a96"
+  ],
+  "address_distinct_pattern": "0xc3000000 | address",
+  "output_bytes": 928,
+  "address_distinct_addresses": [
+    "0x2000",
+    "0x3000",
+    "0x3800",
+    "0x6000",
+    "0x7ed0",
+    "0x7f00"
+  ],
+  "long_branch_guard_padding": "JAL x0,0 selfloops; wrong taken targets into guard area do not fall through"
+}

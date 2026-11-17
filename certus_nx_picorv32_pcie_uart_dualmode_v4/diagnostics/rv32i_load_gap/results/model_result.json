@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "kind": "Ideal CPU plus explicit synthetic immediate-load-use old-value hypothesis fixture; not board/netlist proof",
+  "test_count": 5,
+  "command": "python3 diagnostics/rv32i_load_gap/tests/test_gap.py",
+  "test_source_sha256": "4b6b4b41d9631f7e1e6f0568f690bca8f69cdee9a60257bf13fe2c334aacbfb0",
+  "fixture_source_sha256": "2292724abb7672032499ac9e4abb241ffb8c05c74ca6bda776f5d80cb03d26f5",
+  "firmware_sha256": "b3348414f21d5d20d26c802f33015bd765323312ea59878e9ebb7e2816a76881",
+  "board_confirmed_visible_lines": [
+    "CONST1=13579BD",
+    "CONST2=F5A5AA5A"
+  ],
+  "no_board_raw_uart_byte_capture": true,
+  "synthetic_cases": "Baseline visible digit carry, RXTRACE A/Tab loss and RXPATH no-key zero-row loop; G1 restores the synthetic fixture. Fault absent from downloaded firmware and production RTL."
+}
