@@ -1,0 +1,11 @@
+Config: RXTRACE real CPU CLK=125000000 BAUD=115200 TX wire decoding
+Wire-decoded prompt 1 at           8074189000; TX bytes=90
+Progress          10000000000: decoded TX=110 prompts=1 RX=1
+PASS: A raw word and character traced, then echoed before Enter
+Progress          20000000000: decoded TX=222 prompts=1 RX=2
+Wire-decoded prompt 2 at          24238677000; TX bytes=270
+PASS: RXTRACE banner, RAW/C for A and CR, parser state, wire echo; trap=0 overrun=0 RX=2
+- /workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/fw/cli_rewrite_v1/tests/tb_rxtrace_exact.sv:148: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 24ms; walltime 2.654 s; speed 9.163 ms/s
+- Verilator: cpu 2.649 s on 1 threads; alloced 17 MB
