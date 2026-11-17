@@ -11,7 +11,24 @@ module tb_rxtrace_exact #(
   localparam realtime BIT_NS=1000000000.0/BAUD;
   reg clk=0;
   always #(500000000.0/CLOCK_HZ) clk=~clk;
+`ifdef TEST_USER_POR
+  // User-supplied POR, unchanged apart from ASCII punctuation.
+  reg [19:0] por_cnt = 20'd0;
+  wire resetn_int = &por_cnt;
+  always @(posedge clk) begin
+    if(!resetn_int)
+      por_cnt <= por_cnt + 1'b1;
+  end
+  wire resetn = resetn_int;
+  integer por_clock_edges=0;
+  reg por_released=0;
+  always @(posedge clk)
+    if(!resetn) por_clock_edges=por_clock_edges+1;
+  always @(negedge resetn)
+    if(por_released) $fatal(1,"POR asserted again after release");
+`else
   reg resetn=0;
+`endif
   reg uart_rx=1;
   wire uart_tx;
   wire [7:0] leds;
@@ -131,8 +148,18 @@ module tb_rxtrace_exact #(
     fd=$fopen(log_path,"w");
     if(fd==0) $fatal(1,"Cannot open UART log");
     $display("Config: RXTRACE real CPU CLK=%0d BAUD=%0d TX wire decoding",CLOCK_HZ,BAUD);
+`ifdef TEST_USER_POR
+    #1;
+    if(resetn !== 0 || por_cnt !== 0) $fatal(1,"POR initial state incorrect");
+    @(posedge resetn);
+    if(por_clock_edges != 1048575 || por_cnt !== 20'hfffff)
+      $fatal(1,"POR release count mismatch: edges=%0d counter=%h",por_clock_edges,por_cnt);
+    por_released=1;
+    $display("PASS: user POR released after %0d clock edges at %t",por_clock_edges,$time);
+`else
     repeat(20) @(negedge clk);
     resetn=1;
+`endif
     await_prompt(1);
     check_text(0,{8'h0d,8'h0a,"OSFP CLI REWRITE v1 RXTRACE",8'h0d,8'h0a,"One key at a time; RAW is the word read from IO_RX.",8'h0d,8'h0a,"osfp> "});
     before_bytes=tx_bytes;
@@ -144,6 +171,10 @@ module tb_rxtrace_exact #(
     await_prompt(2);
     check_text(before_bytes,{8'h0d,8'h0a,"RXTRACE RAW=0000000D C=0000000D L=01 BAD=0 HW=00000000 DROP=00000000",8'h0d,8'h0a,8'h0d,8'h0a,"ERR unknown command; help",8'h0d,8'h0a,"osfp> "});
     if(rx_reads!=2 || injected!=2) $fatal(1,"RX count mismatch");
+`ifdef TEST_USER_POR
+    if(resetn !== 1 || por_cnt !== 20'hfffff)
+      $fatal(1,"POR counter did not remain saturated");
+`endif
     $display("PASS: RXTRACE banner, RAW/C for A and CR, parser state, wire echo; trap=0 overrun=0 RX=2");
     $fflush();$fclose(fd);$finish;
   end

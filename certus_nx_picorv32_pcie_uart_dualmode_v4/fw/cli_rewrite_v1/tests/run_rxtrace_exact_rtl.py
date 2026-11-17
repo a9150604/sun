@@ -42,13 +42,16 @@ def main():
     parser.add_argument("--top", choices=TOPS, required=True)
     parser.add_argument("--clock-hz", type=int, default=125000000)
     parser.add_argument("--baud", type=int, default=115200)
+    parser.add_argument("--por", action="store_true",
+                        help="Use the user-supplied 20-bit power-on reset counter")
     parser.add_argument("--verilator", default="verilator")
     parser.add_argument("--jobs", type=int, default=2)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     project = args.project.resolve()
-    output = (args.output or project / "build/cli_rewrite_v1_rxtrace/exact" /
-              args.top).resolve()
+    default_group = "exact-user-por" if args.por else "exact"
+    output = (args.output or project / "build/cli_rewrite_v1_rxtrace" /
+              default_group / args.top).resolve()
     output.mkdir(parents=True, exist_ok=True)
     expected = json.loads((tests / "rxtrace_exact_sources.json").read_text())
     sources = COMMON + TOPS[args.top]
@@ -68,6 +71,8 @@ def main():
                "-GBAUD=" + str(args.baud)]
     if args.top == "cpu-diag":
         command.append("-DTEST_CPU_DIAG")
+    if args.por:
+        command.append("-DTEST_USER_POR")
     command += sources + [str(bench)]
     version = subprocess.check_output([args.verilator, "--version"], text=True).strip()
     manifest = {
@@ -77,9 +82,16 @@ def main():
                    else "certus_nx_picorv32_uart_standalone_top",
         "clock_hz": args.clock_hz, "baud": args.baud, "led_active_low": 1,
         "firmware": firmware, "dut_sources_unmodified": True,
+        "reset_source": {
+            "type": "user_20bit_por" if args.por else "testbench_external_reset",
+            "hold_clock_edges": 1048575 if args.por else 20,
+            "por_in_testbench_drives_top_reset_port": args.por,
+        },
         "source_files": infos, "testbench": {"file": bench.name, **bench_info},
         "compile_command": command, "result": "pending",
-        "limitations": "RTL simulation only; no Radiant netlist, PDC, or board clock/reset model.",
+        "limitations": "RTL simulation only; ideal clock, no Radiant netlist/PDC, "
+                        "FPGA startup-init verification or gate-level reset glitches. "
+                        "User's full modified board Top has not been provided.",
     }
     manifest_path = output / "source_manifest.json"
     manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
