@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "kind": "ideal RV32I machine-code/MMIO model",
+  "test_count": 7,
+  "command": "python3 diagnostics/rv32i_hw_selftest/tests/test_selftest.py",
+  "test_source_sha256": "d5429b703f94e417dde0cffed0a80b1e173a0b386f748f6c3b94b40cb1a5fab7",
+  "firmware_sha256": "41918e6e02702f892d1773b38c76bd7b82fcc65863f52cc3c528818170e84a2a",
+  "synthetic_faults": "Software model only: changed register, register alias, dropped RAM store, missed branch, RAM A14 alias, wrong long-branch target; absent from downloaded HEX."
+}
