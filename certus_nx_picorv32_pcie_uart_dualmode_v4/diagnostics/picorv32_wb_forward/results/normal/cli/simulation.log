@@ -1,0 +1,21 @@
+Config: real CPU, CLK=125000000 BAUD=115200, UART TX wire decoding
+PASS: user POR released after 1048575 clock edges
+Progress          10000000000: decoded TX=17 prompts=0 RX=0
+Wire-decoded prompt 1 at          18061565000; TX bytes=108
+PASS: single A echoes on UART wire before Enter
+Progress          20000000000: decoded TX=124 prompts=1 RX=2
+Wire-decoded prompt 2 at          21707541000; TX bytes=144
+Progress          30000000000: decoded TX=224 prompts=2 RX=9
+Progress          40000000000: decoded TX=337 prompts=2 RX=9
+Wire-decoded prompt 3 at          42163637000; TX bytes=362
+Wire-decoded prompt 4 at          42975925000; TX bytes=370
+Wire-decoded prompt 5 at          43787429000; TX bytes=378
+Progress          50000000000: decoded TX=423 prompts=5 RX=21
+Progress          60000000000: decoded TX=536 prompts=5 RX=21
+Wire-decoded prompt 6 at          65632469000; TX bytes=600
+Wire-decoded prompt 7 at          69604549000; TX bytes=634
+PASS: rewritten CLI wire echo, A+Enter, status, empty Enter, CRLF, BS/DEL; RX=28 trap=0 overrun=0
+- /workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/picorv32_wb_forward/tests/tb_cli_rewrite_por.sv:182: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 70ms; walltime 14.248 s; speed 5.757 ms/s
+- Verilator: cpu 12.093 s on 1 threads; alloced 17 MB

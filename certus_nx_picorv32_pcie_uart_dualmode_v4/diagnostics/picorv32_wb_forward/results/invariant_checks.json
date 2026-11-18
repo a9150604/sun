@@ -1,0 +1,10 @@
+{
+  "kind": "simulation-only invariant observations, not formal verification",
+  "candidate_sha256": "c51201ed368df602fb1c2499795ad5eef12c335abb05c11b7f24bd9437b5943d",
+  "normal_RF_invariant": {
+    "array_recent_write_checks": 2497,
+    "matching_operand_checks": 336,
+    "nonvacuous": true
+  },
+  "scope": "Internal RF, dual read ports, 32 registers, IRQ disabled. Original no-NOP selftest; no physical board inference claimed."
+}

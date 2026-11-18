@@ -1,0 +1,403 @@
+{
+  "result": "PASS",
+  "repository": "a9150604/sun",
+  "original_source_commit": "365fcead5aae84356e2304541c688c7858b503ce",
+  "simulator": "Verilator 5.032 2025-01-01 rev (Debian 5.032-1+b2)",
+  "clock_hz": 125000000,
+  "baud": 115200,
+  "led_active_low": 1,
+  "reset_source": {
+    "type": "user_20bit_por",
+    "hold_clock_edges": 1048575,
+    "por_in_testbench_drives_top_reset_port": true
+  },
+  "source_files": {
+    "rtl/user_design/i2c4_pkg.sv": {
+      "bytes": 1278,
+      "sha256": "55292ff00e3944a767da8e47a4683ba341fc72ef19f51dfe9821fba8b73d8a14",
+      "git_blob_sha1": "17e65b8e316a73bd7b5784545511c81fd303a052"
+    },
+    "rtl/user_design/i2c_master_byte.sv": {
+      "bytes": 8781,
+      "sha256": "e37f7e75344f724198c31e9241d4f42215b35984e7b649ec0fcbc0b51c033c05",
+      "git_blob_sha1": "869b21610828809dd3fde6770bbbdf0b3b63f6f8"
+    },
+    "rtl/user_design/i2c_device_ctrl.sv": {
+      "bytes": 6965,
+      "sha256": "e6dcb853399fe0ee7ad72fe857ce8c396c40ddaa99f8a502b3f2aa554fdf8b70",
+      "git_blob_sha1": "e4d3aea7bea2ea11183a0aea1d7d74d6fdc7e11a"
+    },
+    "rtl/user_design/axil_i2c4_regs.sv": {
+      "bytes": 10974,
+      "sha256": "bfc927ad5ce3363345bf7893ed928afb5c9d44554d041ff439344fcd9446c427",
+      "git_blob_sha1": "ae020bdf9804573d0553eba729ccb86b43636100"
+    },
+    "rtl/soc/native_to_axil_master.v": {
+      "bytes": 2393,
+      "sha256": "6baa560a16d1a16938ce7d651871d6acb8e289b950317eb15002202b1cb477c0",
+      "git_blob_sha1": "1c98c013b03f09460d83859d8190d488807b45ca"
+    },
+    "rtl/soc/uart_tx_mmio.v": {
+      "bytes": 1200,
+      "sha256": "199deb10ca4252c43a11d121fd19a61bdb4145a766643b3185c696f1ecfbfa35",
+      "git_blob_sha1": "fe651de058cd49a9a70b9808933ffd1ad443275c"
+    },
+    "rtl/soc/uart_rx_byte.v": {
+      "bytes": 1658,
+      "sha256": "74f712a150d8ac98f11c5cfba07137d37128f010fbab25dd0b5ffa6933dbcbf8",
+      "git_blob_sha1": "b21ba408be4e43e9c0a8d3d0c8fc1ff832153760"
+    },
+    "rtl/soc/axil_master_mode_mux.sv": {
+      "bytes": 2423,
+      "sha256": "f390073e717c068b71546e15d75f83432b3ec53666032f25c9a73c8a310d9aba",
+      "git_blob_sha1": "1a36a87d7cc95db67b50adf7f3b6872bc0c0c0bb"
+    },
+    "rtl/soc/axil_owner_switch.v": {
+      "bytes": 1511,
+      "sha256": "f33ba758197622a803ff02e8065e047a3d27418029124c286be1adf39b725fe7",
+      "git_blob_sha1": "a5debfd32eecd3b260adf04af0c6fc2cd93f1982"
+    },
+    "diagnostics/uart_cpu_trace/picorv32_cpu_axil_uart_diag.v": {
+      "bytes": 7876,
+      "sha256": "f34c911659a35f583a45151f693924836cabd60b243b3416692e28c8898875b7",
+      "git_blob_sha1": "ceb0948af6841d24adc174d09c15a2ad6f9d16cc"
+    },
+    "diagnostics/uart_cpu_trace/pcie_i2c4_top_cpu_diag_fabric.sv": {
+      "bytes": 4854,
+      "sha256": "c4fc64ccc436af85aa1fd6bfc76425a030cffc83a739afa6b6c698dbd36f38dd",
+      "git_blob_sha1": "cde1ae33192e99b640632047b4ef24621447aa4c"
+    },
+    "diagnostics/uart_cpu_trace/certus_nx_picorv32_uart_cpu_diag_top.sv": {
+      "bytes": 1829,
+      "sha256": "648d3cc25b026fb2b35a419ee86c0870e1ea8c1786639440205c6042153d6408",
+      "git_blob_sha1": "083cc57d62b96de64802c4d35337d6b2fccbc08d"
+    },
+    "rtl/soc/picorv32_cpu_axil_uart.v": {
+      "bytes": 5954,
+      "sha256": "a4551193d2bd7e0e8156aa48b881d8c5fa0bc7526142a95aac0387fdd62c9e82",
+      "git_blob_sha1": "b7b4fc6b6017e1b198ea8fb091ecc404c66d62e7"
+    },
+    "rtl/soc/pcie_i2c4_top_cpu_fabric.sv": {
+      "bytes": 4659,
+      "sha256": "0207d9bf0de668c731f614d55337222a912095b8ee2fda5f2385640e626848d0",
+      "git_blob_sha1": "a0fb60888e4a554af7b023ba8655f8b86d40a85a"
+    },
+    "rtl/soc/certus_nx_picorv32_uart_standalone_top.sv": {
+      "bytes": 1688,
+      "sha256": "ae1d937389f6c7783062a96fc0957c93ba0f68dd9dff9223e0c7da44474136bd",
+      "git_blob_sha1": "0e48732943b93759e478566004dd12d2c57eb7ad"
+    }
+  },
+  "candidate": {
+    "path": "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/picorv32_wb_forward/picorv32_wb_forward.v",
+    "bytes": 95982,
+    "sha256": "c51201ed368df602fb1c2499795ad5eef12c335abb05c11b7f24bd9437b5943d",
+    "git_blob_sha1": "a5d52883de11b7ba1c3d04db34f567879ecc2cd0"
+  },
+  "synthetic_fault_fixture": {
+    "path": "/workspace/sun-inspection/diagnostics/load-use-rtl-review/portable-release-regression/sync-read-fault/picorv32_wb_forward_fault_fixture.v",
+    "bytes": 96222,
+    "sha256": "e68cf974cf4caf88e43ed0d17361fd0ff6233a58ea42f0ae58f014a3a8ef3aaf",
+    "git_blob_sha1": "351533ce6256c5f3391bd27f35030a70e3677e64",
+    "for_simulation_only": true
+  },
+  "inputs": {
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/picorv32_wb_forward/picorv32_wb_forward.v": {
+      "bytes": 95982,
+      "sha256": "c51201ed368df602fb1c2499795ad5eef12c335abb05c11b7f24bd9437b5943d",
+      "git_blob_sha1": "a5d52883de11b7ba1c3d04db34f567879ecc2cd0"
+    },
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/picorv32_wb_forward/tests/run_rtl.py": {
+      "bytes": 16102,
+      "sha256": "1c00e337058b6f51509537998466238cd5fa7cac4c0fa0d6b8518f2b8b129038",
+      "git_blob_sha1": "2dd0ebbbf21f6da269800a8d744f80b7f0cf7885"
+    },
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/fw/cli_rewrite_v1/tests/rxtrace_exact_sources.json": {
+      "bytes": 1627,
+      "sha256": "cd213ad34b613cd6095939462a359cd560ebe96c29712c29d68b7fd6332b5434",
+      "git_blob_sha1": "5c7e0bf39d99c696c7f9ef83b2190c906ccd56a7"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c4_pkg.sv": {
+      "bytes": 1278,
+      "sha256": "55292ff00e3944a767da8e47a4683ba341fc72ef19f51dfe9821fba8b73d8a14",
+      "git_blob_sha1": "17e65b8e316a73bd7b5784545511c81fd303a052"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c_master_byte.sv": {
+      "bytes": 8781,
+      "sha256": "e37f7e75344f724198c31e9241d4f42215b35984e7b649ec0fcbc0b51c033c05",
+      "git_blob_sha1": "869b21610828809dd3fde6770bbbdf0b3b63f6f8"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c_device_ctrl.sv": {
+      "bytes": 6965,
+      "sha256": "e6dcb853399fe0ee7ad72fe857ce8c396c40ddaa99f8a502b3f2aa554fdf8b70",
+      "git_blob_sha1": "e4d3aea7bea2ea11183a0aea1d7d74d6fdc7e11a"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/axil_i2c4_regs.sv": {
+      "bytes": 10974,
+      "sha256": "bfc927ad5ce3363345bf7893ed928afb5c9d44554d041ff439344fcd9446c427",
+      "git_blob_sha1": "ae020bdf9804573d0553eba729ccb86b43636100"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/native_to_axil_master.v": {
+      "bytes": 2393,
+      "sha256": "6baa560a16d1a16938ce7d651871d6acb8e289b950317eb15002202b1cb477c0",
+      "git_blob_sha1": "1c98c013b03f09460d83859d8190d488807b45ca"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/uart_tx_mmio.v": {
+      "bytes": 1200,
+      "sha256": "199deb10ca4252c43a11d121fd19a61bdb4145a766643b3185c696f1ecfbfa35",
+      "git_blob_sha1": "fe651de058cd49a9a70b9808933ffd1ad443275c"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/uart_rx_byte.v": {
+      "bytes": 1658,
+      "sha256": "74f712a150d8ac98f11c5cfba07137d37128f010fbab25dd0b5ffa6933dbcbf8",
+      "git_blob_sha1": "b21ba408be4e43e9c0a8d3d0c8fc1ff832153760"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/axil_master_mode_mux.sv": {
+      "bytes": 2423,
+      "sha256": "f390073e717c068b71546e15d75f83432b3ec53666032f25c9a73c8a310d9aba",
+      "git_blob_sha1": "1a36a87d7cc95db67b50adf7f3b6872bc0c0c0bb"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/axil_owner_switch.v": {
+      "bytes": 1511,
+      "sha256": "f33ba758197622a803ff02e8065e047a3d27418029124c286be1adf39b725fe7",
+      "git_blob_sha1": "a5debfd32eecd3b260adf04af0c6fc2cd93f1982"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/uart_cpu_trace/picorv32_cpu_axil_uart_diag.v": {
+      "bytes": 7876,
+      "sha256": "f34c911659a35f583a45151f693924836cabd60b243b3416692e28c8898875b7",
+      "git_blob_sha1": "ceb0948af6841d24adc174d09c15a2ad6f9d16cc"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/uart_cpu_trace/pcie_i2c4_top_cpu_diag_fabric.sv": {
+      "bytes": 4854,
+      "sha256": "c4fc64ccc436af85aa1fd6bfc76425a030cffc83a739afa6b6c698dbd36f38dd",
+      "git_blob_sha1": "cde1ae33192e99b640632047b4ef24621447aa4c"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/uart_cpu_trace/certus_nx_picorv32_uart_cpu_diag_top.sv": {
+      "bytes": 1829,
+      "sha256": "648d3cc25b026fb2b35a419ee86c0870e1ea8c1786639440205c6042153d6408",
+      "git_blob_sha1": "083cc57d62b96de64802c4d35337d6b2fccbc08d"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/picorv32_cpu_axil_uart.v": {
+      "bytes": 5954,
+      "sha256": "a4551193d2bd7e0e8156aa48b881d8c5fa0bc7526142a95aac0387fdd62c9e82",
+      "git_blob_sha1": "b7b4fc6b6017e1b198ea8fb091ecc404c66d62e7"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/pcie_i2c4_top_cpu_fabric.sv": {
+      "bytes": 4659,
+      "sha256": "0207d9bf0de668c731f614d55337222a912095b8ee2fda5f2385640e626848d0",
+      "git_blob_sha1": "a0fb60888e4a554af7b023ba8655f8b86d40a85a"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/certus_nx_picorv32_uart_standalone_top.sv": {
+      "bytes": 1688,
+      "sha256": "ae1d937389f6c7783062a96fc0957c93ba0f68dd9dff9223e0c7da44474136bd",
+      "git_blob_sha1": "0e48732943b93759e478566004dd12d2c57eb7ad"
+    },
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/firmware/rv32i_hw_selftest.hex": {
+      "bytes": 73728,
+      "sha256": "41918e6e02702f892d1773b38c76bd7b82fcc65863f52cc3c528818170e84a2a",
+      "git_blob_sha1": "692cb17bbea060b3e746f0f2739422010e756f29"
+    },
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/firmware/osfp_cli_rewrite_v1.hex": {
+      "bytes": 73728,
+      "sha256": "1030f723833afa74bd3a38060cbb333d14be42d2bf75e04c4a767fcb576cae4e",
+      "git_blob_sha1": "ab54c52ffd2a23d777c2b092444910d8d6d2f7a6"
+    },
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/rv32i_hw_selftest/tests/tb_hw_selftest.sv": {
+      "bytes": 4007,
+      "sha256": "f22b42dd9431d0a7f79f8988f8bac5a31e92f3ffa5246b886857185bdfd87b7c",
+      "git_blob_sha1": "c81a930aae123396e42eb26e3ccafca54e3807e3"
+    },
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/fw/cli_rewrite_v1/tests/tb_cli_rewrite.sv": {
+      "bytes": 5893,
+      "sha256": "afb0f9410f5c5a4bc08a1745628d35421e99c7d1e66e1c8dac776290a9cafd54",
+      "git_blob_sha1": "8b8b8a63b4d58e42397f8525649d0ddf46058627"
+    },
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/picorv32_wb_forward/tests/tb_cli_rewrite_por.sv": {
+      "bytes": 6479,
+      "sha256": "859022bae2818c80af219248af6f488f732b7ab15e972a84d742375750af109a",
+      "git_blob_sha1": "d77e2b5fdfed78e44e7d55c7101e66d33172437a"
+    }
+  },
+  "limitations": "RTL simulation with ideal clock/POR; not Radiant synthesis, placement/routing, SDF timing simulation, actual RF mapping, or proof of the board's root cause.",
+  "results": [
+    {
+      "profile": "normal",
+      "test": "selftest",
+      "result": "PASS",
+      "core": {
+        "path": "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/picorv32_wb_forward/picorv32_wb_forward.v",
+        "bytes": 95982,
+        "sha256": "c51201ed368df602fb1c2499795ad5eef12c335abb05c11b7f24bd9437b5943d",
+        "git_blob_sha1": "a5d52883de11b7ba1c3d04db34f567879ecc2cd0"
+      },
+      "original_dut_files_unmodified": true,
+      "core_is_synthetic_fault_fixture": false,
+      "dut_source_count_including_candidate": 13,
+      "compile_command": [
+        "/workspace/sun-inspection/tools/verilator/root/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "-Wno-fatal",
+        "--top-module",
+        "tb_hw_selftest",
+        "--Mdir",
+        "/workspace/sun-inspection/diagnostics/load-use-rtl-review/portable-release-regression/normal/selftest/obj",
+        "-j",
+        "2",
+        "-GBAUD=115200",
+        "-GFIRMWARE_HEX=\"/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/firmware/rv32i_hw_selftest.hex\"",
+        "-GCLOCK_HZ=125000000",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c4_pkg.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c_master_byte.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c_device_ctrl.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/axil_i2c4_regs.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/native_to_axil_master.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/uart_tx_mmio.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/uart_rx_byte.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/axil_master_mode_mux.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/axil_owner_switch.v",
+        "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/picorv32_wb_forward/picorv32_wb_forward.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/uart_cpu_trace/picorv32_cpu_axil_uart_diag.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/uart_cpu_trace/pcie_i2c4_top_cpu_diag_fabric.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/uart_cpu_trace/certus_nx_picorv32_uart_cpu_diag_top.sv",
+        "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/rv32i_hw_selftest/tests/tb_hw_selftest.sv"
+      ],
+      "uart_bytes": 928,
+      "uart_sha256": "cc585ac1609f1f7f46cf93568b24bc95a69214fb20c28cfa0551ecbd1d26cd3c"
+    },
+    {
+      "profile": "normal",
+      "test": "cli",
+      "result": "PASS",
+      "core": {
+        "path": "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/picorv32_wb_forward/picorv32_wb_forward.v",
+        "bytes": 95982,
+        "sha256": "c51201ed368df602fb1c2499795ad5eef12c335abb05c11b7f24bd9437b5943d",
+        "git_blob_sha1": "a5d52883de11b7ba1c3d04db34f567879ecc2cd0"
+      },
+      "original_dut_files_unmodified": true,
+      "core_is_synthetic_fault_fixture": false,
+      "dut_source_count_including_candidate": 13,
+      "compile_command": [
+        "/workspace/sun-inspection/tools/verilator/root/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "-Wno-fatal",
+        "--top-module",
+        "tb_cli_rewrite",
+        "--Mdir",
+        "/workspace/sun-inspection/diagnostics/load-use-rtl-review/portable-release-regression/normal/cli/obj",
+        "-j",
+        "2",
+        "-GBAUD=115200",
+        "-GFIRMWARE_HEX=\"/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/firmware/osfp_cli_rewrite_v1.hex\"",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c4_pkg.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c_master_byte.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c_device_ctrl.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/axil_i2c4_regs.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/native_to_axil_master.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/uart_tx_mmio.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/uart_rx_byte.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/axil_master_mode_mux.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/axil_owner_switch.v",
+        "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/picorv32_wb_forward/picorv32_wb_forward.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/picorv32_cpu_axil_uart.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/pcie_i2c4_top_cpu_fabric.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/certus_nx_picorv32_uart_standalone_top.sv",
+        "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/picorv32_wb_forward/tests/tb_cli_rewrite_por.sv"
+      ],
+      "uart_bytes": 634,
+      "uart_sha256": "8a06aa548ff6d224cc7d015e8559190a96ec4a63fba845dafb2deb5e421af80d"
+    },
+    {
+      "profile": "sync-read-fault",
+      "test": "selftest",
+      "result": "PASS",
+      "core": {
+        "path": "/workspace/sun-inspection/diagnostics/load-use-rtl-review/portable-release-regression/sync-read-fault/picorv32_wb_forward_fault_fixture.v",
+        "bytes": 96222,
+        "sha256": "e68cf974cf4caf88e43ed0d17361fd0ff6233a58ea42f0ae58f014a3a8ef3aaf",
+        "git_blob_sha1": "351533ce6256c5f3391bd27f35030a70e3677e64"
+      },
+      "original_dut_files_unmodified": true,
+      "core_is_synthetic_fault_fixture": true,
+      "dut_source_count_including_candidate": 13,
+      "compile_command": [
+        "/workspace/sun-inspection/tools/verilator/root/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "-Wno-fatal",
+        "--top-module",
+        "tb_hw_selftest",
+        "--Mdir",
+        "/workspace/sun-inspection/diagnostics/load-use-rtl-review/portable-release-regression/sync-read-fault/selftest/obj",
+        "-j",
+        "2",
+        "-GBAUD=115200",
+        "-GFIRMWARE_HEX=\"/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/firmware/rv32i_hw_selftest.hex\"",
+        "-GCLOCK_HZ=125000000",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c4_pkg.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c_master_byte.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c_device_ctrl.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/axil_i2c4_regs.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/native_to_axil_master.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/uart_tx_mmio.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/uart_rx_byte.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/axil_master_mode_mux.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/axil_owner_switch.v",
+        "/workspace/sun-inspection/diagnostics/load-use-rtl-review/portable-release-regression/sync-read-fault/picorv32_wb_forward_fault_fixture.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/uart_cpu_trace/picorv32_cpu_axil_uart_diag.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/uart_cpu_trace/pcie_i2c4_top_cpu_diag_fabric.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/uart_cpu_trace/certus_nx_picorv32_uart_cpu_diag_top.sv",
+        "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/rv32i_hw_selftest/tests/tb_hw_selftest.sv"
+      ],
+      "uart_bytes": 928,
+      "uart_sha256": "cc585ac1609f1f7f46cf93568b24bc95a69214fb20c28cfa0551ecbd1d26cd3c"
+    },
+    {
+      "profile": "sync-read-fault",
+      "test": "cli",
+      "result": "PASS",
+      "core": {
+        "path": "/workspace/sun-inspection/diagnostics/load-use-rtl-review/portable-release-regression/sync-read-fault/picorv32_wb_forward_fault_fixture.v",
+        "bytes": 96222,
+        "sha256": "e68cf974cf4caf88e43ed0d17361fd0ff6233a58ea42f0ae58f014a3a8ef3aaf",
+        "git_blob_sha1": "351533ce6256c5f3391bd27f35030a70e3677e64"
+      },
+      "original_dut_files_unmodified": true,
+      "core_is_synthetic_fault_fixture": true,
+      "dut_source_count_including_candidate": 13,
+      "compile_command": [
+        "/workspace/sun-inspection/tools/verilator/root/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "-Wno-fatal",
+        "--top-module",
+        "tb_cli_rewrite",
+        "--Mdir",
+        "/workspace/sun-inspection/diagnostics/load-use-rtl-review/portable-release-regression/sync-read-fault/cli/obj",
+        "-j",
+        "2",
+        "-GBAUD=115200",
+        "-GFIRMWARE_HEX=\"/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/firmware/osfp_cli_rewrite_v1.hex\"",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c4_pkg.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c_master_byte.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c_device_ctrl.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/axil_i2c4_regs.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/native_to_axil_master.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/uart_tx_mmio.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/uart_rx_byte.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/axil_master_mode_mux.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/axil_owner_switch.v",
+        "/workspace/sun-inspection/diagnostics/load-use-rtl-review/portable-release-regression/sync-read-fault/picorv32_wb_forward_fault_fixture.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/picorv32_cpu_axil_uart.v",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/pcie_i2c4_top_cpu_fabric.sv",
+        "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/certus_nx_picorv32_uart_standalone_top.sv",
+        "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/picorv32_wb_forward/tests/tb_cli_rewrite_por.sv"
+      ],
+      "uart_bytes": 634,
+      "uart_sha256": "8a06aa548ff6d224cc7d015e8559190a96ec4a63fba845dafb2deb5e421af80d"
+    }
+  ],
+  "changed_inputs": []
+}

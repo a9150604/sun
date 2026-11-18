@@ -1,0 +1,18 @@
+
+OSFP CLI REWRITE v1 (RV32I WORD IO)
+Type help for commands. Numbers are hex; delay is decimal ms.
+osfp> A
+ERR unknown command; help
+osfp> status
+owner_cpu=1 ch=0 dev=0x50 reg=0x00 data=0x00 writes_unlocked=0 irq=0x0
+clock_hz=0x07735940 timeout_ms=0x000001F4 poll_gap=0x03E8
+rx_bytes=0x00000009 hardware_overruns=0x00000000 queue_drops=0x00000000
+osfp> 
+osfp> 
+osfp> stax tus
+owner_cpu=1 ch=0 dev=0x50 reg=0x00 data=0x00 writes_unlocked=0 irq=0x0
+clock_hz=0x07735940 timeout_ms=0x000001F4 poll_gap=0x03E8
+rx_bytes=0x00000015 hardware_overruns=0x00000000 queue_drops=0x00000000
+osfp> locx k
+OK writes locked
+osfp> 

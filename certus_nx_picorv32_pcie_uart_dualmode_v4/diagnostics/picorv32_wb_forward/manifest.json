@@ -1,0 +1,33 @@
+{
+  "kind": "Project-specific internal dual-port register writeback-forwarding candidate",
+  "upstream_commit": "ef203c2b0a3fb793280f5114941416c425c5b461",
+  "original_file": "third_party/picorv32.v",
+  "original_sha256": "0836050971b3c6cdd28ac3b1e5719a67fb645161912bef1e472e63995ceb0622",
+  "candidate_file": "diagnostics/picorv32_wb_forward/picorv32_wb_forward.v",
+  "candidate_sha256": "c51201ed368df602fb1c2499795ad5eef12c335abb05c11b7f24bd9437b5943d",
+  "candidate_bytes": 95982,
+  "original_preserved": true,
+  "tested_configuration": {
+    "ENABLE_REGS_16_31": 1,
+    "ENABLE_REGS_DUALPORT": 1,
+    "ENABLE_IRQ": 0,
+    "COMPRESSED_ISA": 0,
+    "clock_hz": 125000000,
+    "baud": 115200
+  },
+  "mechanism": "Capture the previous rising-edge nonzero register write and forward matching internal dual-port read operands.",
+  "scope": "Board candidate, not an upstream change or established Radiant root-cause proof.",
+  "unmodified_modes": [
+    "PICORV32_REGS external register file",
+    "RISCV_FORMAL_BLACKBOX_REGS",
+    "PICORV32_TESTBUG_001",
+    "PICORV32_TESTBUG_002",
+    "single-port read path"
+  ],
+  "generator_sha256": "d61b8525de82bb8d09cf271292fae2462cdce2e1e2741b3102fcb302fe97954c",
+  "limitations": [
+    "Actual mapped RF and routing are not available.",
+    "Synthesis may remove redundant bypass logic; mapped retention or equivalent correct behavior and timing must be checked.",
+    "No post-route SDF simulation or board validation of this candidate has been performed."
+  ]
+}

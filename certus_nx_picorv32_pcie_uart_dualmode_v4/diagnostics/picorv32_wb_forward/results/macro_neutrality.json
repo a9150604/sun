@@ -1,0 +1,18 @@
+[
+  {
+    "macro": "PICORV32_TESTBUG_001",
+    "preprocessed_tokens_identical": true
+  },
+  {
+    "macro": "PICORV32_TESTBUG_002",
+    "preprocessed_tokens_identical": true
+  },
+  {
+    "macro": "RISCV_FORMAL_BLACKBOX_REGS",
+    "preprocessed_tokens_identical": true
+  },
+  {
+    "macro": "PICORV32_REGS=picorv32_regs",
+    "preprocessed_tokens_identical": true
+  }
+]
