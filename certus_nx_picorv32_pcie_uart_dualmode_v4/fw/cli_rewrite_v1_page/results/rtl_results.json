@@ -1,0 +1,216 @@
+{
+  "result": "PASS",
+  "clock_hz": 125000000,
+  "baud": 115200,
+  "reset_source": "user 20-bit saturating POR; 1048575 clock edges",
+  "source_files": {
+    "rtl/user_design/i2c4_pkg.sv": {
+      "bytes": 1278,
+      "sha256": "55292ff00e3944a767da8e47a4683ba341fc72ef19f51dfe9821fba8b73d8a14",
+      "git_blob_sha1": "17e65b8e316a73bd7b5784545511c81fd303a052"
+    },
+    "rtl/user_design/i2c_master_byte.sv": {
+      "bytes": 8781,
+      "sha256": "e37f7e75344f724198c31e9241d4f42215b35984e7b649ec0fcbc0b51c033c05",
+      "git_blob_sha1": "869b21610828809dd3fde6770bbbdf0b3b63f6f8"
+    },
+    "rtl/user_design/i2c_device_ctrl.sv": {
+      "bytes": 6965,
+      "sha256": "e6dcb853399fe0ee7ad72fe857ce8c396c40ddaa99f8a502b3f2aa554fdf8b70",
+      "git_blob_sha1": "e4d3aea7bea2ea11183a0aea1d7d74d6fdc7e11a"
+    },
+    "rtl/user_design/axil_i2c4_regs.sv": {
+      "bytes": 10974,
+      "sha256": "bfc927ad5ce3363345bf7893ed928afb5c9d44554d041ff439344fcd9446c427",
+      "git_blob_sha1": "ae020bdf9804573d0553eba729ccb86b43636100"
+    },
+    "rtl/soc/native_to_axil_master.v": {
+      "bytes": 2393,
+      "sha256": "6baa560a16d1a16938ce7d651871d6acb8e289b950317eb15002202b1cb477c0",
+      "git_blob_sha1": "1c98c013b03f09460d83859d8190d488807b45ca"
+    },
+    "rtl/soc/uart_tx_mmio.v": {
+      "bytes": 1200,
+      "sha256": "199deb10ca4252c43a11d121fd19a61bdb4145a766643b3185c696f1ecfbfa35",
+      "git_blob_sha1": "fe651de058cd49a9a70b9808933ffd1ad443275c"
+    },
+    "rtl/soc/uart_rx_byte.v": {
+      "bytes": 1658,
+      "sha256": "74f712a150d8ac98f11c5cfba07137d37128f010fbab25dd0b5ffa6933dbcbf8",
+      "git_blob_sha1": "b21ba408be4e43e9c0a8d3d0c8fc1ff832153760"
+    },
+    "rtl/soc/axil_master_mode_mux.sv": {
+      "bytes": 2423,
+      "sha256": "f390073e717c068b71546e15d75f83432b3ec53666032f25c9a73c8a310d9aba",
+      "git_blob_sha1": "1a36a87d7cc95db67b50adf7f3b6872bc0c0c0bb"
+    },
+    "rtl/soc/axil_owner_switch.v": {
+      "bytes": 1511,
+      "sha256": "f33ba758197622a803ff02e8065e047a3d27418029124c286be1adf39b725fe7",
+      "git_blob_sha1": "a5debfd32eecd3b260adf04af0c6fc2cd93f1982"
+    },
+    "rtl/soc/picorv32_cpu_axil_uart.v": {
+      "bytes": 5954,
+      "sha256": "a4551193d2bd7e0e8156aa48b881d8c5fa0bc7526142a95aac0387fdd62c9e82",
+      "git_blob_sha1": "b7b4fc6b6017e1b198ea8fb091ecc404c66d62e7"
+    },
+    "rtl/soc/pcie_i2c4_top_cpu_fabric.sv": {
+      "bytes": 4659,
+      "sha256": "0207d9bf0de668c731f614d55337222a912095b8ee2fda5f2385640e626848d0",
+      "git_blob_sha1": "a0fb60888e4a554af7b023ba8655f8b86d40a85a"
+    },
+    "rtl/soc/certus_nx_picorv32_uart_standalone_top.sv": {
+      "bytes": 1688,
+      "sha256": "ae1d937389f6c7783062a96fc0957c93ba0f68dd9dff9223e0c7da44474136bd",
+      "git_blob_sha1": "0e48732943b93759e478566004dd12d2c57eb7ad"
+    }
+  },
+  "core": {
+    "bytes": 95982,
+    "sha256": "c51201ed368df602fb1c2499795ad5eef12c335abb05c11b7f24bd9437b5943d",
+    "git_blob_sha1": "a5d52883de11b7ba1c3d04db34f567879ecc2cd0"
+  },
+  "firmware": {
+    "bytes": 73728,
+    "sha256": "dd0eb3e29d697bd80e344a72bd0000bb8050a3066b04f160b212ae64d02546fb",
+    "git_blob_sha1": "0019a1f8f7544b43693711a327aa8bbd21d550b0"
+  },
+  "inputs": {
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c4_pkg.sv": {
+      "bytes": 1278,
+      "sha256": "55292ff00e3944a767da8e47a4683ba341fc72ef19f51dfe9821fba8b73d8a14",
+      "git_blob_sha1": "17e65b8e316a73bd7b5784545511c81fd303a052"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c_master_byte.sv": {
+      "bytes": 8781,
+      "sha256": "e37f7e75344f724198c31e9241d4f42215b35984e7b649ec0fcbc0b51c033c05",
+      "git_blob_sha1": "869b21610828809dd3fde6770bbbdf0b3b63f6f8"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c_device_ctrl.sv": {
+      "bytes": 6965,
+      "sha256": "e6dcb853399fe0ee7ad72fe857ce8c396c40ddaa99f8a502b3f2aa554fdf8b70",
+      "git_blob_sha1": "e4d3aea7bea2ea11183a0aea1d7d74d6fdc7e11a"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/axil_i2c4_regs.sv": {
+      "bytes": 10974,
+      "sha256": "bfc927ad5ce3363345bf7893ed928afb5c9d44554d041ff439344fcd9446c427",
+      "git_blob_sha1": "ae020bdf9804573d0553eba729ccb86b43636100"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/native_to_axil_master.v": {
+      "bytes": 2393,
+      "sha256": "6baa560a16d1a16938ce7d651871d6acb8e289b950317eb15002202b1cb477c0",
+      "git_blob_sha1": "1c98c013b03f09460d83859d8190d488807b45ca"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/uart_tx_mmio.v": {
+      "bytes": 1200,
+      "sha256": "199deb10ca4252c43a11d121fd19a61bdb4145a766643b3185c696f1ecfbfa35",
+      "git_blob_sha1": "fe651de058cd49a9a70b9808933ffd1ad443275c"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/uart_rx_byte.v": {
+      "bytes": 1658,
+      "sha256": "74f712a150d8ac98f11c5cfba07137d37128f010fbab25dd0b5ffa6933dbcbf8",
+      "git_blob_sha1": "b21ba408be4e43e9c0a8d3d0c8fc1ff832153760"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/axil_master_mode_mux.sv": {
+      "bytes": 2423,
+      "sha256": "f390073e717c068b71546e15d75f83432b3ec53666032f25c9a73c8a310d9aba",
+      "git_blob_sha1": "1a36a87d7cc95db67b50adf7f3b6872bc0c0c0bb"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/axil_owner_switch.v": {
+      "bytes": 1511,
+      "sha256": "f33ba758197622a803ff02e8065e047a3d27418029124c286be1adf39b725fe7",
+      "git_blob_sha1": "a5debfd32eecd3b260adf04af0c6fc2cd93f1982"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/picorv32_cpu_axil_uart.v": {
+      "bytes": 5954,
+      "sha256": "a4551193d2bd7e0e8156aa48b881d8c5fa0bc7526142a95aac0387fdd62c9e82",
+      "git_blob_sha1": "b7b4fc6b6017e1b198ea8fb091ecc404c66d62e7"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/pcie_i2c4_top_cpu_fabric.sv": {
+      "bytes": 4659,
+      "sha256": "0207d9bf0de668c731f614d55337222a912095b8ee2fda5f2385640e626848d0",
+      "git_blob_sha1": "a0fb60888e4a554af7b023ba8655f8b86d40a85a"
+    },
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/certus_nx_picorv32_uart_standalone_top.sv": {
+      "bytes": 1688,
+      "sha256": "ae1d937389f6c7783062a96fc0957c93ba0f68dd9dff9223e0c7da44474136bd",
+      "git_blob_sha1": "0e48732943b93759e478566004dd12d2c57eb7ad"
+    },
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/picorv32_wb_forward/picorv32_wb_forward.v": {
+      "bytes": 95982,
+      "sha256": "c51201ed368df602fb1c2499795ad5eef12c335abb05c11b7f24bd9437b5943d",
+      "git_blob_sha1": "a5d52883de11b7ba1c3d04db34f567879ecc2cd0"
+    },
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/firmware/osfp_cli_rewrite_v1_page.hex": {
+      "bytes": 73728,
+      "sha256": "dd0eb3e29d697bd80e344a72bd0000bb8050a3066b04f160b212ae64d02546fb",
+      "git_blob_sha1": "0019a1f8f7544b43693711a327aa8bbd21d550b0"
+    },
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/fw/cli_rewrite_v1_page/tests/tb_page_write.sv": {
+      "bytes": 6152,
+      "sha256": "76fa57f3ff6ef600fc2a84e95c00f4412e3d51137863e9cfcbf396b832d7b4b8",
+      "git_blob_sha1": "f8eb4161ca1b161c35160aa11cb78cad4838eeda"
+    },
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/fw/cli_rewrite_v1_page/tests/run_rtl.py": {
+      "bytes": 7342,
+      "sha256": "221dd490a0fd9585ffa0ea9c2f35c5333b9fb9b71c6dd94dbbee174792be6ec7",
+      "git_blob_sha1": "652a80c0d9d7282754d30baf74f0a7a8e5fa21ec"
+    },
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/picorv32_wb_forward/results/regression_results.json": {
+      "bytes": 25624,
+      "sha256": "6713b97008cf6f2d6dd96c6b20bd696f724c206b096e0ecca90484b8837fe9ed",
+      "git_blob_sha1": "8ddb256af31de3611e1356c158cf0d9a72dd6a43"
+    }
+  },
+  "changed_inputs": [],
+  "compile_command": [
+    "/workspace/sun-inspection/tools/verilator/root/usr/bin/verilator",
+    "--binary",
+    "--timing",
+    "-Wno-fatal",
+    "--top-module",
+    "tb_page_write",
+    "--Mdir",
+    "/workspace/sun-inspection/diagnostics/page-write-validation/rtl/obj",
+    "-j",
+    "2",
+    "-GFIRMWARE_HEX=\"/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/firmware/osfp_cli_rewrite_v1_page.hex\"",
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c4_pkg.sv",
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c_master_byte.sv",
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/i2c_device_ctrl.sv",
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/user_design/axil_i2c4_regs.sv",
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/native_to_axil_master.v",
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/uart_tx_mmio.v",
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/uart_rx_byte.v",
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/axil_master_mode_mux.sv",
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/axil_owner_switch.v",
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/picorv32_cpu_axil_uart.v",
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/pcie_i2c4_top_cpu_fabric.sv",
+    "/workspace/sun-inspection/diagnostics/exact-github-rtl-audit/repo/certus_nx_picorv32_pcie_uart_dualmode_v4/rtl/soc/certus_nx_picorv32_uart_standalone_top.sv",
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/diagnostics/picorv32_wb_forward/picorv32_wb_forward.v",
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/fw/cli_rewrite_v1_page/tests/tb_page_write.sv"
+  ],
+  "uart": {
+    "bytes": 947,
+    "sha256": "707ef4c0e113a5288e8d779e4ef9480368e780386291998640066814d6b58685",
+    "git_blob_sha1": "a65177298c034538c59e2870457e114a6a4ad49b"
+  },
+  "uart_bytes": 947,
+  "injected_and_consumed_rx_bytes": 152,
+  "prompts": 16,
+  "i2c_transactions": 9,
+  "reads": 7,
+  "writes": 2,
+  "stops": 9,
+  "checks": [
+    "locked selector writes issue no I2C transaction",
+    "plain page writes persist until explicitly changed",
+    "same-bank page0/page1 upper-window values are distinct",
+    "lower register00 remains common",
+    "writeverify 7E and 7F issue no I2C transaction",
+    "every A0/register/Sr/A1 read and A0/register/data write is checked",
+    "every read ends with master NACK; every transaction ends with STOP",
+    "complete UART wire transcript matches; CPU trap=0 and RX overrun=0"
+  ],
+  "limitations": "Ideal non-stretching bit-level slave fixture with test contents; not actual OSFP, analog I2C timing, Radiant P&R/SDF, or board validation."
+}

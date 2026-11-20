@@ -1,0 +1,64 @@
+--- fw/cli_rewrite_v1/main.c
++++ fw/cli_rewrite_v1_page/main.c
+@@ -129,7 +129,8 @@
+         " writeverify [reg] [data]  (read, test, read, restore)\r\n"
+         " pollset <slot 0..7> <reg> | pollgap <hex> | poll\r\n"
+         " timeout <hex ms 0A..1388> | delay <decimal ms 0..600000>\r\n"
+-        " Writes start locked; bank/page registers 7E/7F are blocked.\r\n");
++        " Writes start locked; plain write allows bank/page 7E/7F.\r\n"
++        " writeverify blocks 7E/7F; selectors are not test data.\r\n");
+ }
+ 
+ static void status(void)
+@@ -177,8 +178,8 @@
+         OUT("ERR writes locked; type unlock first\r\n");
+         return;
+     }
+-    if (reg == 0x7eu || reg == 0x7fu) {
+-        OUT("ERR bank/page register requires a separate CMIS sequence\r\n");
++    if ((reg == 0x7eu || reg == 0x7fu) && verify != 0u) {
++        OUT("ERR bank/page register: use plain write, not writeverify\r\n");
+         return;
+     }
+     platform_test_begin();
+@@ -382,10 +383,10 @@
+     last_drops = uart_queue_drops();
+     bus_init();
+ #if CLI_RX_TRACE
+-    OUT("\r\nOSFP CLI REWRITE v1 RXTRACE\r\n"
++    OUT("\r\nOSFP CLI REWRITE v1 PAGE WRITE RXTRACE\r\n"
+         "One key at a time; RAW is the word read from IO_RX.\r\n");
+ #else
+-    OUT("\r\nOSFP CLI REWRITE v1 (RV32I WORD IO)\r\n"
++    OUT("\r\nOSFP CLI REWRITE v1 PAGE WRITE (RV32I WORD IO)\r\n"
+         "Type help for commands. Numbers are hex; delay is decimal ms.\r\n");
+ #endif
+     prompt();
+--- fw/cli_rewrite_v1/build.py
++++ fw/cli_rewrite_v1_page/build.py
+@@ -1,8 +1,9 @@
+ #!/usr/bin/env python3
+-"""Build the independent OSFP UART CLI with a bare-metal RISC-V GCC toolchain.
+-
+-Run with Python 3 on Linux or Windows. The existing firmware images are not
+-changed. Pass --cc and individual tool options if the tools are not on PATH.
++"""Build the separate OSFP UART CLI page-write variant with RISC-V GCC.
++
++Run with Python 3 on Linux or Windows. The original normal/RXTRACE images are
++not changed; this command writes the separate page-write image. Pass --cc and
++individual tool options if the tools are not on PATH.
+ """
+ import argparse
+ import hashlib
+@@ -137,9 +138,9 @@
+     for path in sources + [source_dir / "linker.ld"]:
+         if not path.is_file():
+             raise SystemExit("Missing required source: " + str(path))
+-    firmware_name = "osfp_cli_rewrite_v1_rxtrace" if args.rx_trace else "osfp_cli_rewrite_v1"
++    firmware_name = "osfp_cli_rewrite_v1_page_rxtrace" if args.rx_trace else "osfp_cli_rewrite_v1_page"
+     flags = (*FLAGS, "-DCLI_RX_TRACE=1") if args.rx_trace else FLAGS
+-    build_folder = "cli_rewrite_v1_rxtrace" if args.rx_trace else "cli_rewrite_v1"
++    build_folder = "cli_rewrite_v1_page_rxtrace" if args.rx_trace else "cli_rewrite_v1_page"
+     output_dir = (args.output_dir or project / "build" / build_folder).resolve()
+     hex_output = (args.hex_output or project / "firmware" / (firmware_name + ".hex")).resolve()
+     output_dir.mkdir(parents=True, exist_ok=True)

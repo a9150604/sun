@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "input_sha256": {
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/fw/cli_rewrite_v1/tests/test_firmware.py": "b19d60b03600fd06f0031f456ad7ddad8c669827397c548b09d60e121ecddb17",
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/firmware/osfp_cli_rewrite_v1_page.hex": "dd0eb3e29d697bd80e344a72bd0000bb8050a3066b04f160b212ae64d02546fb",
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/firmware/osfp_cli_rewrite_v1.hex": "1030f723833afa74bd3a38060cbb333d14be42d2bf75e04c4a767fcb576cae4e",
+    "/workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/fw/cli_rewrite_v1_page/tests/test_firmware.py": "49befc6ce6062ed514dc27c71332c78fcfdeed5559bf0c2ec32283ee55601027"
+  },
+  "changed_inputs": [],
+  "tests_run": 43,
+  "failures": 0,
+  "errors": 0,
+  "normal_baseline_tests": 19,
+  "page_regression_tests": 19,
+  "page_fixture_tests": 5,
+  "page_hex_sha256": "dd0eb3e29d697bd80e344a72bd0000bb8050a3066b04f160b212ae64d02546fb",
+  "baseline_hex_sha256": "1030f723833afa74bd3a38060cbb333d14be42d2bf75e04c4a767fcb576cae4e",
+  "limitations": "RV32I software execution with ideal MMIO/page-window fixture; raw 7E transmission is not a CMIS atomic bank-update test; no physical OSFP or RTL timing validation."
+}

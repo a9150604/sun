@@ -1,0 +1,34 @@
+
+OSFP CLI REWRITE v1 PAGE WRITE (RV32I WORD IO)
+Type help for commands. Numbers are hex; delay is decimal ms.
+osfp> write 7F 01
+ERR writes locked; type unlock first
+osfp> unlock
+OK writes unlocked
+osfp> read 80
+READ ch=0 reg=0x80 value=0x11 rc=0x00
+osfp> write 7F 01
+WRITE reg=0x7F data=0x01 rc=0x00
+osfp> read 7F
+READ ch=0 reg=0x7F value=0x01 rc=0x00
+osfp> read 80
+READ ch=0 reg=0x80 value=0xA5 rc=0x00
+osfp> read 81
+READ ch=0 reg=0x81 value=0x5A rc=0x00
+osfp> read 00
+READ ch=0 reg=0x00 value=0x19 rc=0x00
+osfp> writeverify 7F 00
+ERR bank/page register: use plain write, not writeverify
+osfp> writeverify 7E 00
+ERR bank/page register: use plain write, not writeverify
+osfp> write 7F 00
+WRITE reg=0x7F data=0x00 rc=0x00
+osfp> read 80
+READ ch=0 reg=0x80 value=0x11 rc=0x00
+osfp> lock
+OK writes locked
+osfp> write 7F 01
+ERR writes locked; type unlock first
+osfp> read 7F
+READ ch=0 reg=0x7F value=0x00 rc=0x00
+osfp> 

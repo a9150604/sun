@@ -1,0 +1,30 @@
+Prompt 1 TX=119
+Prompt 2 TX=176
+Prompt 3 TX=210
+I2C READ reg=80 data=11 page=00
+Prompt 4 TX=264
+I2C WRITE reg=7f data=01 page=01
+Prompt 5 TX=317
+I2C READ reg=7f data=01 page=01
+Prompt 6 TX=371
+I2C READ reg=80 data=a5 page=01
+Prompt 7 TX=425
+I2C READ reg=81 data=5a page=01
+Prompt 8 TX=479
+I2C READ reg=00 data=19 page=01
+Prompt 9 TX=533
+Prompt 10 TX=616
+Prompt 11 TX=699
+I2C WRITE reg=7f data=00 page=00
+Prompt 12 TX=752
+I2C READ reg=80 data=11 page=00
+Prompt 13 TX=806
+Prompt 14 TX=836
+Prompt 15 TX=893
+I2C READ reg=7f data=00 page=00
+Prompt 16 TX=947
+PASS RX=152 prompts=16 transactions=9 reads=7 writes=2 stops=9
+- /workspace/sun-inspection/certus_nx_picorv32_pcie_uart_dualmode_v4/fw/cli_rewrite_v1_page/tests/tb_page_write.sv:181: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 121ms; walltime 20.211 s; speed 6.027 ms/s
+- Verilator: cpu 20.037 s on 1 threads; alloced 17 MB

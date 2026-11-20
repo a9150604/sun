@@ -1,0 +1,48 @@
+test_argument_counts_and_numeric_overflow (baseline_firmware_tests.FirmwareTests.test_argument_counts_and_numeric_overflow) ... ok
+test_boot_echo_and_empty_enter (baseline_firmware_tests.FirmwareTests.test_boot_echo_and_empty_enter) ... ok
+test_crlf_lf_and_visible_editing (baseline_firmware_tests.FirmwareTests.test_crlf_lf_and_visible_editing) ... ok
+test_failed_write_still_attempts_restoration (baseline_firmware_tests.FirmwareTests.test_failed_write_still_attempts_restoration) ... ok
+test_hardware_overrun_discards_damaged_line (baseline_firmware_tests.FirmwareTests.test_hardware_overrun_discards_damaged_line) ... ok
+test_help_and_configuration (baseline_firmware_tests.FirmwareTests.test_help_and_configuration) ... ok
+test_locked_and_bank_page_writes (baseline_firmware_tests.FirmwareTests.test_locked_and_bank_page_writes) ... ok
+test_mode_and_owner_guards (baseline_firmware_tests.FirmwareTests.test_mode_and_owner_guards) ... ok
+test_nack_and_timeout_paths (baseline_firmware_tests.FirmwareTests.test_nack_and_timeout_paths) ... ok
+test_overlength_line_never_executes_truncated_unlock (baseline_firmware_tests.FirmwareTests.test_overlength_line_never_executes_truncated_unlock) ... ok
+test_poll_uses_two_wraps_and_returns_eight_slots (baseline_firmware_tests.FirmwareTests.test_poll_uses_two_wraps_and_returns_eight_slots) ... ok
+test_poll_without_autovalid_times_out (baseline_firmware_tests.FirmwareTests.test_poll_without_autovalid_times_out) ... ok
+test_read_write_and_restore (baseline_firmware_tests.FirmwareTests.test_read_write_and_restore) ... ok
+test_restore_failure_is_reported_separately (baseline_firmware_tests.FirmwareTests.test_restore_failure_is_reported_separately) ... ok
+test_software_queue_loss_rejects_suffix (baseline_firmware_tests.FirmwareTests.test_software_queue_loss_rejects_suffix) ... ok
+test_uart_receives_while_help_waits_for_tx (baseline_firmware_tests.FirmwareTests.test_uart_receives_while_help_waits_for_tx) ... ok
+test_verify_mismatch_restores_original (baseline_firmware_tests.FirmwareTests.test_verify_mismatch_restores_original) ... ok
+test_warm_reset_reinitializes_defaults_without_reloading_ram (baseline_firmware_tests.FirmwareTests.test_warm_reset_reinitializes_defaults_without_reloading_ram) ... ok
+test_zero_delay_and_heartbeat (baseline_firmware_tests.FirmwareTests.test_zero_delay_and_heartbeat) ... ok
+test_argument_counts_and_numeric_overflow (__main__.PageRegression.test_argument_counts_and_numeric_overflow) ... ok
+test_boot_echo_and_empty_enter (__main__.PageRegression.test_boot_echo_and_empty_enter) ... ok
+test_crlf_lf_and_visible_editing (__main__.PageRegression.test_crlf_lf_and_visible_editing) ... ok
+test_failed_write_still_attempts_restoration (__main__.PageRegression.test_failed_write_still_attempts_restoration) ... ok
+test_hardware_overrun_discards_damaged_line (__main__.PageRegression.test_hardware_overrun_discards_damaged_line) ... ok
+test_help_and_configuration (__main__.PageRegression.test_help_and_configuration) ... ok
+test_locked_and_bank_page_writes (__main__.PageRegression.test_locked_and_bank_page_writes) ... ok
+test_mode_and_owner_guards (__main__.PageRegression.test_mode_and_owner_guards) ... ok
+test_nack_and_timeout_paths (__main__.PageRegression.test_nack_and_timeout_paths) ... ok
+test_overlength_line_never_executes_truncated_unlock (__main__.PageRegression.test_overlength_line_never_executes_truncated_unlock) ... ok
+test_poll_uses_two_wraps_and_returns_eight_slots (__main__.PageRegression.test_poll_uses_two_wraps_and_returns_eight_slots) ... ok
+test_poll_without_autovalid_times_out (__main__.PageRegression.test_poll_without_autovalid_times_out) ... ok
+test_read_write_and_restore (__main__.PageRegression.test_read_write_and_restore) ... ok
+test_restore_failure_is_reported_separately (__main__.PageRegression.test_restore_failure_is_reported_separately) ... ok
+test_software_queue_loss_rejects_suffix (__main__.PageRegression.test_software_queue_loss_rejects_suffix) ... ok
+test_uart_receives_while_help_waits_for_tx (__main__.PageRegression.test_uart_receives_while_help_waits_for_tx) ... ok
+test_verify_mismatch_restores_original (__main__.PageRegression.test_verify_mismatch_restores_original) ... ok
+test_warm_reset_reinitializes_defaults_without_reloading_ram (__main__.PageRegression.test_warm_reset_reinitializes_defaults_without_reloading_ram) ... ok
+test_zero_delay_and_heartbeat (__main__.PageRegression.test_zero_delay_and_heartbeat) ... ok
+test_nack_and_timeout_do_not_select_a_page (__main__.PageFixtureTests.test_nack_and_timeout_do_not_select_a_page) ... ok
+test_page_select_persists_and_lower_memory_is_common (__main__.PageFixtureTests.test_page_select_persists_and_lower_memory_is_common) ... ok
+test_pcie_owner_cannot_issue_selector_write (__main__.PageFixtureTests.test_pcie_owner_cannot_issue_selector_write) ... ok
+test_raw_bank_byte_and_channel_page_storage (__main__.PageFixtureTests.test_raw_bank_byte_and_channel_page_storage) ... ok
+test_selector_verify_has_no_transactions_or_page_changes (__main__.PageFixtureTests.test_selector_verify_has_no_transactions_or_page_changes) ... ok
+
+----------------------------------------------------------------------
+Ran 43 tests in 18.391s
+
+OK
